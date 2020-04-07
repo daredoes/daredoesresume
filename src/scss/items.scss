@@ -1,0 +1,26 @@
+.two-part-card {
+  @extend .card, .py-2, .rounded, .shadow, .my-1, .bg-light;
+  & > div {
+    @extend .row, .align-items-center, .m-0, .flex-nowrap;
+    & > div:first-child {
+      @extend .col-3,
+        .col-md-2,
+        .text-center,
+        .px-0,
+        .mx-1,
+        .d-flex,
+        .align-items-center,
+        .justify-content-center;
+    }
+    & > div:last-child {
+      @extend .col-9, .col-md-10, .px-0;
+    }
+  }
+}
+
+.one-part-card {
+  @extend .card, .rounded, .shadow, .my-1, .bg-light;
+  .dangerous-html {
+    @extend .my-4;
+  }
+}

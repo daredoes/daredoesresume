@@ -1,0 +1,147 @@
+
+.print-only{
+    display: none;
+}
+
+@media print{
+    .no-print{
+        display: none;
+    }
+
+    .print-only{
+        display: block;
+    }
+
+    *{
+      font-family: arial !important;
+    }
+
+    .resume.content {
+      margin: 0 !important;
+    }
+
+    hr {
+      border: groove !important;
+      margin: 0 !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .printable-contact-items > *:not(:last-child) {
+      border-right: solid;
+    }
+
+    .context-text > ul > li{
+      list-style-type: square;
+      list-style-position: outside !important;
+    }
+
+    .print-only > * > h1{
+        font-weight: 600;
+    }
+
+    .print-info > *{
+        font-weight: 700;
+
+    }
+    #print-header{
+        margin-top: -2rem;
+    }
+
+    .condensed {
+        margin-top: -1rem;
+
+    }
+    .half-condensed{
+        margin-top: -0.5rem;
+    }
+
+    .print-header-items > .body {
+        padding-left: 0.75rem;
+    }
+
+    .print-header-items > .title {
+        font-weight:600;
+        padding-bottom: 1rem;
+    }
+    .print-header-items > h5 {
+        font-weight: 500;
+    }
+
+    h5.print-header {
+        font-weight: 600;
+    }
+
+    
+
+    .resume-bar {
+        background-color: #000000;
+        padding: 0.5em;
+        border-radius: 1px;
+    }
+
+    #resume-name{
+      font-size: 24px;
+    }
+
+    .resume-large{
+      font-size: 24px;
+    }
+
+    .resume-medium{
+      font-size: 16px;
+    }
+
+    .resume-small{
+      font-size: 12px;
+    }
+
+    .resume-large *{
+      @extend .resume-large
+    }
+
+    .resume-medium *{
+      @extend .resume-medium
+    }
+
+    .resume-small *{
+      @extend .resume-small
+    }
+
+    .resume-bar-holder {
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+    }
+
+    .resume-bar-text{
+        color: #F4F4F4;
+        font-weight: 500;
+        text-transform: capitalize;
+
+    }
+
+    .resume-bar-level-text{
+        font-weight: 400;
+        color: #F1F1F1;
+    }
+
+    .body > p, .body > div{
+        margin: 0;
+    }
+
+    .container-fluid{
+      padding: 0;
+      background: white !important;
+    }
+
+    body, main, .resume{
+      background: white !important;
+    }
+
+    img{
+      display: hidden;
+    }
+
+    .navbar, .footer {
+        @extend .no-print
+    }
+}

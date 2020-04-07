@@ -1,33 +1,26 @@
-import { Link } from "gatsby"
+import Link from "./link"
 import PropTypes from "prop-types"
 import React from "react"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
+
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
+  <header className="no-print">
+    <nav className="navbar navbar-dark bg-dark">
+      <div className="container">
+        <Link to="/" className="navbar-brand">
           {siteTitle}
         </Link>
-      </h1>
-    </div>
+        <a
+          href="https://github.com/daredoes/"
+          target="_blank"
+          className="text-light"
+        >
+          <FontAwesomeIcon icon={faGithub} size="2x" fixedWidth />
+        </a>
+      </div>
+    </nav>
   </header>
 )
 

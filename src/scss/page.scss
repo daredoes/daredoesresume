@@ -1,0 +1,42 @@
+.layout {
+  @extend .container, .py-3, .mb-5, .bg-dark;
+  margin-top: 7rem;
+  //background-image: url(../images/patterns/witewall_3.png);
+}
+
+@include media-breakpoint-up(lg) {
+  .layout {
+    $size: 70%;
+    width: $size;
+    max-width: $size;
+  }
+}
+
+.layout-container {
+  flex-grow: 2;
+}
+
+html {
+  //background-image: url(../images/patterns/stardust.png);
+  @extend .scroll, .bg-primary;
+}
+body {
+  background-color: inherit;
+}
+
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+#gatsby-focus-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.center-span {
+  @extend .h-100, .d-inline-flex, .align-items-center, .justify-content-center;
+}

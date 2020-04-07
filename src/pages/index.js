@@ -1,21 +1,49 @@
 import React from "react"
+import PropTypes from "prop-types"
+import { graphql } from "gatsby"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import PublicIndex from "../components/publicIndex"
+import PrintIndex from "../components/printIndex"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+function openPrintDialog(e) {
+  e.preventDefault()
+  window.print()
+}
+
+const IndexPage = ({ data }) => {
+  const { frontmatter } = data.markdownRemark
+  return (
+    <Layout className="index-page">
+      <SEO title="Home" />
+      <PrintIndex />
+      <PublicIndex />
+    </Layout>
+  )
+}
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.object,
+    }),
+  }),
+}
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query JMHIndexPage {
+    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      frontmatter {
+        title
+        first_name
+        middle_name
+        last_name
+        birth_date
+      }
+    }
+  }
+`

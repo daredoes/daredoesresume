@@ -1,0 +1,21 @@
+$small: 1.5rem;
+$medium: 3rem;
+
+.icon {
+  @extend .text-light, .bg-info;
+  border-radius: 50%;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: $small;
+  width: $small;
+  min-height: $small;
+  min-width: $small;
+}
+
+.icon.icon-medium {
+  height: $medium;
+  width: $medium;
+  min-height: $medium;
+  min-width: $medium;
+}

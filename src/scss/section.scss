@@ -1,0 +1,40 @@
+.section-header {
+  @extend .h4, .text-uppercase, .font-weight-bold, .text-secondary;
+}
+
+.progress.border {
+  @extend .border-secondary;
+}
+
+.progress > .progress-bar {
+  @extend .bg-secondary;
+}
+
+.section-progress-buttons {
+  @extend .text-secondary;
+}
+
+.section.as-row {
+  .section-elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    & > div > span {
+      @extend .m-1, .p-2, .rounded, .badge, .badge-pill, .badge-primary;
+    }
+    & > div > a {
+      @extend .m-1, .p-2, .rounded, .badge, .badge-pill, .badge-info;
+    }
+  }
+}
+
+hr {
+  @extend .bg-secondary, .my-3;
+  height: 4px;
+}
+
+.section {
+  @extend .my-3;
+}
