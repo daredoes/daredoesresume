@@ -5,10 +5,7 @@ import { faPrint } from "@fortawesome/free-solid-svg-icons"
 
 import moment from "moment"
 
-function openPrintDialog(e) {
-  e.preventDefault()
-  window.print()
-}
+import { openPrintDialog } from "./helpers"
 
 const Footer = () => {
   const buildtime = moment(process.env.GATSBY_BUILDTIME)

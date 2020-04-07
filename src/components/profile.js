@@ -24,38 +24,28 @@ const Profile = () => {
   const frontmatter = data.markdownRemark.frontmatter
 
   return (
-    <div className="w-100 text-center text-light">
+    <div className="w-100 text-center">
       <div className="profile-photo"></div>
       <br />
-      <span className="h2 font-weight-bold text-uppercase">Hello,</span>
-      <p className="h3 text-uppercase font-weight-bold">
-        My name is{" "}
-        <span className="text-secondary">
+      <span className="h2 font-weight-bold text-uppercase text-light">
+        Hello,
+      </span>
+      <p className="h3 text-uppercase font-weight-bold text-light">
+        I'm{" "}
+        <span className="text-dark">
           {frontmatter.first_name} {frontmatter.last_name}
         </span>
         .<br />
         <Link
           role="button"
-          href="#"
-          tabIndex="0"
-          anchorTag={true}
-          anchorSize="xs"
-          className="text-info"
-          onClick={openPrintDialog}
-        >
-          Print this page
-        </Link>{" "}
-        to convert my life into my{" "}
-        <Link
-          role="button"
           tabIndex="0"
           anchorTag={true}
           anchorSize="xs"
           href="#"
-          className="text-info"
+          className="btn btn-outline btn-success my-2 btn-lg"
           onClick={openPrintDialog}
         >
-          Resumé/CV
+          Print Resumé/CV PDF
         </Link>
       </p>
     </div>

@@ -2,7 +2,7 @@ $small: 1.5rem;
 $medium: 3rem;
 
 .icon {
-  @extend .text-light, .bg-info;
+  @extend .text-light, .bg-secondary;
   border-radius: 50%;
   align-items: center;
   display: inline-flex;

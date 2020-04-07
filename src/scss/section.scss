@@ -1,17 +1,27 @@
 .section-header {
-  @extend .h4, .text-uppercase, .font-weight-bold, .text-secondary;
+  @extend .h4, .text-uppercase, .font-weight-bold, .text-light;
 }
 
 .progress.border {
-  @extend .border-secondary;
+  @extend .border-primary;
 }
 
 .progress > .progress-bar {
-  @extend .bg-secondary;
+  @extend .bg-primary;
 }
 
 .section-progress-buttons {
-  @extend .text-secondary;
+  @extend .text-primary;
+}
+
+.section-progress-buttons svg:hover {
+  @extend .text-light;
+  cursor: pointer;
+}
+
+.section-progress-buttons:active svg:hover {
+  @extend .text-primary;
+  cursor: pointer;
 }
 
 .section.as-row {
@@ -31,7 +41,7 @@
 }
 
 hr {
-  @extend .bg-secondary, .my-3;
+  @extend .bg-light, .my-3;
   height: 4px;
 }
 

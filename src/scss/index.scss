@@ -12,7 +12,7 @@
     background-image: url(../images/patterns/darkness.png);
     content: url(../images//icons//avatar.gif);
     border-width: 0.25rem !important;
-    @extend .scroll, .border, .border-dark;
+    @extend .scroll, .border, .border-secondary;
 
     img {
       width: 150px;
