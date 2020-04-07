@@ -3,9 +3,15 @@ import Helmet from "react-helmet"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 
+import Section from "../components/section"
+import Project from "../components/public/project"
+
 class TagRoute extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
+    const children = posts.map(edge => (
+      <Project key={edge.node.id} {...edge.node} />
+    ))
     const postLinks = posts.map(post => (
       <li key={post.node.fields.slug}>
         <Link to={post.node.fields.slug}>
@@ -22,30 +28,18 @@ class TagRoute extends React.Component {
 
     return (
       <Layout>
-        <section className="section">
-          <Helmet title={`${tag} | ${title}`} />
-          <div className="content">
-            <div className="columns">
-              <div
-                className="column is-10 is-offset-1"
-                style={{ marginBottom: "6rem" }}
-              >
-                <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
-                <ul className="taglist">{postLinks}</ul>
-                <p>
-                  <Link to="/tags/">Browse all tags</Link>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Section elements={children} title={tagHeader} />
+        <Helmet title={`${tag} | ${title}`} />
+        <Link className="btn btn-primary w-100" to="/tags/">
+          Browse all tags
+        </Link>
       </Layout>
     )
   }
 }
 
 export default TagRoute
-/*
+
 export const tagPageQuery = graphql`
   query TagPage($tag: String) {
     site {
@@ -56,20 +50,29 @@ export const tagPageQuery = graphql`
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { tags: { in: [$tag] }, visible: { eq: true } } }
     ) {
       totalCount
       edges {
         node {
+          id
+          html
+          excerpt(pruneLength: 500)
           fields {
             slug
           }
           frontmatter {
             title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
+            tags
+            weight
+            printable
+            visible
+            description
           }
         }
       }
     }
   }
 `
-*/

@@ -7,10 +7,12 @@
       padding-inline-start: 20px;
     }
   }
-  p {
-    margin: 0;
-  }
+
   a {
     @extend .text-info;
+  }
+
+  li > p {
+    margin: 0;
   }
 }

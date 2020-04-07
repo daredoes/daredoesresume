@@ -6,7 +6,7 @@ export default class SectionHeader extends React.Component {
     const { title, children } = this.props
     return (
       <div>
-        <span className="section-header">&#47;&#47;{title}</span>
+        <span className="section-header">&#47;&#47;&nbsp;{title}</span>
         <hr className="section-header" />
         {children}
       </div>

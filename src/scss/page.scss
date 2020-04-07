@@ -1,7 +1,10 @@
 .layout {
-  @extend .container, .py-3, .mb-5, .bg-secondary;
-  margin-top: 7rem;
+  @extend .container, .py-3, .bg-secondary;
   //background-image: url(../images/patterns/witewall_3.png);
+}
+
+.profile-picture > .layout {
+  margin-top: 5rem;
 }
 
 @include media-breakpoint-up(lg) {

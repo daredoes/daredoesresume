@@ -16,7 +16,7 @@ function openPrintDialog(e) {
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
   return (
-    <Layout className="index-page">
+    <Layout className="index-page profile-picture" printablePage>
       <SEO title="Home" />
       <PrintIndex />
       <PublicIndex />

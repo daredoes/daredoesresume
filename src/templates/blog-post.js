@@ -4,12 +4,20 @@ import { kebabCase } from "lodash"
 import Helmet from "react-helmet"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
+import SEO from "../components/seo"
+import Project from "../components/public/project"
 // import Content, { HTMLContent } from '../components/Content'
 
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
-
-  return <Layout></Layout>
+  const { markdownRemark: post, site } = data
+  const { title, date } = post.frontmatter
+  return (
+    <Layout>
+      <SEO title={title} />
+      <Helmet title={`${title} | ${site.siteMetadata.title}`} />
+      <Project nonLinkTitle={true} key={post.id} {...post} />
+    </Layout>
+  )
 }
 
 BlogPost.propTypes = {
@@ -22,14 +30,27 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     markdownRemark(id: { eq: $id }) {
+      excerpt(pruneLength: 500)
       id
+      fields {
+        slug
+      }
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         title
-        description
+        templateKey
+        date(formatString: "MMMM DD, YYYY")
         tags
+        weight
+        printable
+        visible
+        description
       }
     }
   }

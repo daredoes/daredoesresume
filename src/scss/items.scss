@@ -13,7 +13,7 @@
         .justify-content-center;
     }
     & > div:last-child {
-      @extend .col-9, .col-md-10, .px-0;
+      @extend .col-9, .col-md-10;
     }
   }
 }

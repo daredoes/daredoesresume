@@ -20,7 +20,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons"
 
 library.add(fab, fas, far)
 
-const Layout = ({ children, className }) => {
+const Layout = ({ children, className, printablePage }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -37,14 +37,19 @@ const Layout = ({ children, className }) => {
       <div className={`layout-container ${className}`}>
         <main className="layout">{children}</main>
       </div>
-      <Footer />
+      <Footer printablePage={printablePage} />
     </>
   )
 }
 
 Layout.propTypes = {
   className: PropTypes.string,
+  printablePage: PropTypes.bool,
   children: PropTypes.node.isRequired,
+}
+
+Layout.defaultProps = {
+  printablePage: false,
 }
 
 export default Layout

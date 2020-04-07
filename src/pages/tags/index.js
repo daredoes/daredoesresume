@@ -1,8 +1,10 @@
-import React from 'react'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
-import Layout from '../../components/Layout'
+import React from "react"
+import { kebabCase } from "lodash"
+import Helmet from "react-helmet"
+import { Link, graphql } from "gatsby"
+import Layout from "../../components/Layout"
+import Section from "../../components/section"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const TagsPage = ({
   data: {
@@ -13,28 +15,19 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-    <section className="section">
-      <Helmet title={`Tags | ${title}`} />
-      <div className="container content">
-        <div className="columns">
-          <div
-            className="column is-10 is-offset-1"
-            style={{ marginBottom: '6rem' }}
-          >
-            <h1 className="title is-size-2 is-bold-light">Tags</h1>
-            <ul className="taglist">
-              {group.map(tag => (
-                <li key={tag.fieldValue}>
-                  <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <Helmet title={`Tags | ${title}`} />
+    <Section
+      elements={group.map(tag => (
+        <div key={tag.fieldValue}>
+          <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+            <FontAwesomeIcon icon="tag" />
+            &nbsp;{tag.fieldValue} ({tag.totalCount})
+          </Link>
         </div>
-      </div>
-    </section>
+      ))}
+      asRow
+      title={"Tags"}
+    />
   </Layout>
 )
 
@@ -47,7 +40,10 @@ export const tagPageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(limit: 1000) {
+    allMarkdownRemark(
+      limit: 1000
+      sort: { fields: [frontmatter___tags], order: DESC }
+    ) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

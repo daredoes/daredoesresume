@@ -56,7 +56,14 @@ export default class Section extends React.Component {
   }
 
   render() {
-    const { title, withProgress, elements, className } = this.props
+    const {
+      title,
+      withProgress,
+      elements,
+      className,
+      asRow,
+      normalHeader,
+    } = this.props
     const progressBar = (
       <div className="row align-items-center m-0 p-0">
         {this.makeScrollElement(false)}
@@ -81,11 +88,15 @@ export default class Section extends React.Component {
       <div
         className={`section${
           className !== undefined ? ` section-${className}` : ``
-        }`}
+        } ${asRow ? `as-row` : ``}`}
       >
-        <SectionHeader title={title}>
-          {withProgress && progressBar}
-        </SectionHeader>
+        {normalHeader ? (
+          <h4>{title}</h4>
+        ) : (
+          <SectionHeader title={title}>
+            {withProgress && progressBar}
+          </SectionHeader>
+        )}
         <div className={`section-elements`}>
           {withProgress ? elements[this.state.active] : elements}
         </div>
@@ -99,8 +110,12 @@ Section.propTypes = {
   className: PropTypes.string,
   title: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   withProgress: PropTypes.bool,
+  asRow: PropTypes.bool,
+  normalHeader: PropTypes.bool,
 }
 
 Section.defaultProps = {
   withProgress: false,
+  asRow: false,
+  normalHeader: false,
 }
