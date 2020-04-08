@@ -1,11 +1,11 @@
 import React from "react"
 import Profile from "./profile"
-import Hobbies from "./public/hobbies"
-import Skills from "./public/skills"
-import Contacts from "./public/contacts"
-import Educations from "./public/educations"
-import Experiences from "./public/experiences"
-import Projects from "./public/projects"
+import Hobbies from "./public/Hobbies"
+import Skills from "./public/Skills"
+import Contacts from "./public/Contacts"
+import Educations from "./public/Educations"
+import Experiences from "./public/Experiences"
+import Projects from "./public/Projects"
 
 import ResponsiveColumns from "./responsiveColumns"
 

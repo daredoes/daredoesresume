@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 
 import Section from "../components/section"
-import Project from "../components/public/project"
+import Project from "../components/public/Project"
 
 class TagRoute extends React.Component {
   render() {
