@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { kebabCase } from "lodash"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "./Link"
-import Section from "./Section"
+import Section from "./section"
 
 class Project extends React.Component {
   render() {

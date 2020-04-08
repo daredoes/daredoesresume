@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Section from "./Section"
+import Section from "./section"
 import Project from "./Project"
 
 const Projects = () => {
