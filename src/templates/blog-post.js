@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { kebabCase } from "lodash"
 import Helmet from "react-helmet"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/Layout"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Project from "../components/public/project"
 // import Content, { HTMLContent } from '../components/Content'

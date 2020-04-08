@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import SectionHeader from "./SectionHeader"
+import SectionHeader from "./sectionHeader"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretRight, faCaretLeft } from "@fortawesome/free-solid-svg-icons"
 import Link from "./link"
