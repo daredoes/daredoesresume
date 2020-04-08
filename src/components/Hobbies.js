@@ -1,9 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Section from "../section"
+import Section from "./Section"
 import Hobby from "./Hobby"
-
 
 const Hobbies = () => {
   const data = useStaticQuery(graphql`
@@ -30,9 +29,13 @@ const Hobbies = () => {
     }
   `)
 
-  const elements = data.hobbies.edges.filter((edge) => edge.node.frontmatter && edge.node.frontmatter.visible);
-  const children = elements.map((edge) => <Hobby key={edge.node.id} {...edge.node} />);
-  
+  const elements = data.hobbies.edges.filter(
+    edge => edge.node.frontmatter && edge.node.frontmatter.visible
+  )
+  const children = elements.map(edge => (
+    <Hobby key={edge.node.id} {...edge.node} />
+  ))
+
   return (
     <Section elements={children} className="hobbies" asRow title="Hobbies" />
   )
