@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PublicIndex from "../components/public-index"
-import PrintIndex from "../components/printIndex"
+import PrintIndex from "../components/print-index"
 
 const IndexPage = () => {
   return (

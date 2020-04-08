@@ -7,7 +7,7 @@ import Educations from "./public/Educations"
 import Experiences from "./public/Experiences"
 import Projects from "./public/Projects"
 
-import ResponsiveColumns from "./responsiveColumns"
+import ResponsiveColumns from "./responsive-columns"
 
 const PublicIndex = () => {
   const columns = [
