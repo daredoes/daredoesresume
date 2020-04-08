@@ -22,3 +22,9 @@
     }
   }
 }
+
+.print-only {
+  .profile-name {
+    @extend .text-dark, .h4, .m-0;
+  }
+}

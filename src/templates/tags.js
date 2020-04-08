@@ -27,7 +27,7 @@ class TagRoute extends React.Component {
     } tagged with “${tag}”`
 
     return (
-      <Layout>
+      <Layout className="print-safe">
         <Section elements={children} title={tagHeader} />
         <Helmet title={`${tag} | ${title}`} />
         <Link className="btn btn-primary w-100" to="/tags/">

@@ -24,3 +24,10 @@
     @extend .my-4;
   }
 }
+
+.one-part-card-printed {
+  @extend .d-flex, .align-items-center, .justify-content-between;
+  * {
+    @extend .font-weight-bold, .m-0;
+  }
+}

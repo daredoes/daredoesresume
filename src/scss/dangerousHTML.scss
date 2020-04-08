@@ -1,8 +1,6 @@
 .dangerous-html {
   @extend .my-1;
   & > ul {
-    @extend .my-2;
-
     & li > ul {
       padding-inline-start: 20px;
     }
@@ -10,6 +8,10 @@
 
   a {
     @extend .text-info;
+  }
+
+  p {
+    @extend .mb-1;
   }
 
   li > p {

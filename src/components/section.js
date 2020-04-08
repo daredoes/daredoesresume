@@ -63,6 +63,8 @@ export default class Section extends React.Component {
       className,
       asRow,
       normalHeader,
+      sectionHeaderClassName,
+      print,
     } = this.props
     const progressBar = (
       <div className="row align-items-center m-0 p-0">
@@ -84,21 +86,29 @@ export default class Section extends React.Component {
         {this.makeScrollElement(true)}
       </div>
     )
+    const hasTitle = !(title === undefined || title === null)
+    const header = hasTitle ? (
+      normalHeader ? (
+        <h4 className={sectionHeaderClassName}>{title}</h4>
+      ) : (
+        <SectionHeader
+          sectionHeaderClassName={sectionHeaderClassName}
+          title={title}
+          print={print}
+        >
+          {!print && withProgress && progressBar}
+        </SectionHeader>
+      )
+    ) : null
     return (
       <div
         className={`section${
           className !== undefined ? ` section-${className}` : ``
         } ${asRow ? `as-row` : ``}`}
       >
-        {normalHeader ? (
-          <h4>{title}</h4>
-        ) : (
-          <SectionHeader title={title}>
-            {withProgress && progressBar}
-          </SectionHeader>
-        )}
+        {header}
         <div className={`section-elements`}>
-          {withProgress ? elements[this.state.active] : elements}
+          {!print && withProgress ? elements[this.state.active] : elements}
         </div>
       </div>
     )
@@ -108,14 +118,17 @@ export default class Section extends React.Component {
 Section.propTypes = {
   elements: PropTypes.array.isRequired,
   className: PropTypes.string,
-  title: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  title: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   withProgress: PropTypes.bool,
   asRow: PropTypes.bool,
   normalHeader: PropTypes.bool,
+  sectionHeaderClassName: PropTypes.string,
+  print: PropTypes.bool,
 }
 
 Section.defaultProps = {
   withProgress: false,
   asRow: false,
   normalHeader: false,
+  print: false,
 }

@@ -43,3 +43,27 @@ body,
 .center-span {
   @extend .h-100, .d-inline-flex, .align-items-center, .justify-content-center;
 }
+
+.not-found {
+  background-image: url(../images//icons/robot.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.not-found-page {
+  .section {
+    @extend .h-100;
+  }
+
+  .section-elements {
+    @extend .h-75,
+      .d-flex,
+      .align-items-center,
+      .justify-content-center,
+      .flex-column;
+  }
+}
+
+.max-w-100 {
+  max-width: 100%;
+}

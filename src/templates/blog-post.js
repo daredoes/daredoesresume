@@ -12,7 +12,7 @@ const BlogPost = ({ data }) => {
   const { markdownRemark: post, site } = data
   const { title, date } = post.frontmatter
   return (
-    <Layout>
+    <Layout className="print-safe">
       <SEO title={title} />
       <Helmet title={`${title} | ${site.siteMetadata.title}`} />
       <Project nonLinkTitle={true} key={post.id} {...post} />

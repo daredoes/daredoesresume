@@ -3,11 +3,16 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import Section from "../components/section"
+import RobotDare from "../images/icons/robot.png"
+
 const NotFoundPage = () => (
-  <Layout>
+  <Layout className="print-safe not-found-page">
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Section
+      title="NOT FOUND"
+      elements={<img className="max-w-100" src={RobotDare} />}
+    />
   </Layout>
 )
 

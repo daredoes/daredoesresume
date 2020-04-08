@@ -35,7 +35,7 @@ const Layout = ({ children, className, printablePage }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className={`layout-container ${className}`}>
-        <main className="layout">{children}</main>
+        <main className="layout h-100">{children}</main>
       </div>
       <Footer printablePage={printablePage} />
     </>
