@@ -1,10 +1,10 @@
 import React from "react"
 
 import Profile from "./profile"
-import Contacts from "./public/contacts"
-import Experiences from "./public/experiences"
-import Educations from "./public/educations"
-import Skills from "./public/skills"
+import Contacts from "./public/contacts.js"
+import Experiences from "./public/experiences.js"
+import Educations from "./public/educations.js"
+import Skills from "./public/skills.js"
 
 const PrintIndex = () => {
   return (
