@@ -1,9 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import SectionHeader from "./sectionHeader"
+import SectionHeader from "./section-header"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretRight, faCaretLeft } from "@fortawesome/free-solid-svg-icons"
-import Link from "./link"
 
 export default class Section extends React.Component {
   constructor(props) {

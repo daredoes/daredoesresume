@@ -1,20 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PublicIndex from "../components/publicIndex"
+import PublicIndex from "../components/public-index"
 import PrintIndex from "../components/printIndex"
 
-function openPrintDialog(e) {
-  e.preventDefault()
-  window.print()
-}
-
-const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+const IndexPage = () => {
   return (
     <>
       <PrintIndex />
@@ -35,17 +27,3 @@ IndexPage.propTypes = {
 }
 
 export default IndexPage
-
-export const pageQuery = graphql`
-  query JMHIndexPage {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        title
-        first_name
-        middle_name
-        last_name
-        birth_date
-      }
-    }
-  }
-`
