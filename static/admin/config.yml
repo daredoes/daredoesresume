@@ -1,0 +1,252 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: src/images
+public_folder: /images
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/pages/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "blog-post",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          min: "0",
+          max: "100",
+          default: "50",
+        }
+      - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+  - name: "contact"
+    label: "Contact Items"
+    folder: "src/pages/contact"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "key",
+          widget: "hidden",
+          default: "contact",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "URL", name: "external_url", widget: "string" }
+      - {
+          label: "Icon",
+          name: "icon",
+          widget: "fontawesome-regular",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          min: "0",
+          max: "100",
+          default: "50",
+        }
+      - {
+          label: "Printable?",
+          name: "printable",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Visible", name: "visible", widget: "boolean", default: true }
+      - {
+          label: "Published?",
+          name: "published",
+          widget: "boolean",
+          default: false,
+        }
+
+  - name: "skills"
+    label: "Skills"
+    folder: "src/pages/skills"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "key",
+          widget: "hidden",
+          default: "skill",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Icon",
+          name: "icon",
+          widget: "fontawesome-regular",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          min: "0",
+          max: "100",
+          default: "50",
+        }
+      - {
+          label: "Printable?",
+          name: "printable",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+  - name: "hobbies"
+    label: "Hobbies"
+    folder: "src/pages/hobbies"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "key",
+          widget: "hidden",
+          default: "hobby",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Icon",
+          name: "icon",
+          widget: "fontawesome-regular",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          min: "0",
+          max: "100",
+          default: "50",
+        }
+      - {
+          label: "Printable?",
+          name: "printable",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+  - name: "experience"
+    label: "Experience"
+    folder: "src/pages/experience"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "key",
+          widget: "hidden",
+          default: "experience",
+        }
+      - { label: "Company Name", name: "name", widget: "string" }
+      - { label: "Job Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "URL", name: "external_url", widget: "string" }
+      - { label: "Start Date", name: "date", widget: "datetime" }
+      - { label: "Date", name: "display_date", widget: "string" }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          min: "0",
+          max: "100",
+          default: "50",
+        }
+      - {
+          label: "Printable?",
+          name: "printable",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+  - name: "education"
+    label: "Education"
+    folder: "src/pages/education"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "key",
+          widget: "hidden",
+          default: "education",
+        }
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Graduation Date",
+          name: "graduation_date",
+          widget: "datetime",
+        }
+      - { label: "Date", name: "display_date", widget: "string" }
+      - {
+          label: "Date Pre-Label",
+          name: "pre_date",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          min: "0",
+          max: "100",
+          default: "50",
+        }
+      - {
+          label: "Printable?",
+          name: "printable",
+          widget: "boolean",
+          default: true,
+        }
+      - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/index.md"
+        label: "Landing Page"
+        name: "index"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
+            }
+          - { label: "Title", name: "title", widget: "string", tagname: "h1" }
+          - { label: "Body", name: "body", widget: "markdown", required: false }
+          - {
+              label: "Profile Picture",
+              name: "image",
+              widget: "image",
+              required: false,
+            }
+          - { label: "First Name", name: "first_name", widget: "string" }
+          - {
+              label: "Middle Name(s)",
+              name: "middle_name",
+              widget: "string",
+              required: false,
+            }
+          - { label: "Last Name", name: "last_name", widget: "string" }
+          - { label: "Public Name", name: "public_name", widget: "string" }
+          - { label: "Print Name", name: "print_name", widget: "string" }
+          - { label: "Birth Date", name: "birth_date", widget: "datetime" }
