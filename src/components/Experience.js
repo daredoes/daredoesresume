@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Link from "./Link"
+import Link from "./link"
 
 class Experience extends React.Component {
   render() {
