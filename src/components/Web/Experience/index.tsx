@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 
+import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -29,10 +30,9 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html, print}) 
     const LinkOrSpan = useMemo(() => {
         return external_url ? (
             <Link
-              className="title text-info h4"
               to={external_url}
               anchorTag={true}
-              anchorSize="xs"
+              anchorSize="small"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -47,20 +47,19 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html, print}) 
     return print ? (
         <span className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></span> 
     ) : (
-        <Card raised>
+        <Card variant='outlined'>
             <CardHeader
             subheader={display_date}
-            subheaderTypographyProps={{ variant: 'h5'}}
+            subheaderTypographyProps={{ variant: 'h6'}}
             title={(
             <>
             {title}&nbsp;{LinkOrSpan}
             </>)}
-            titleTypographyProps={{ variant: 'h4'}}
+            titleTypographyProps={{ variant: 'h5'}}
+            style={{padding: '8px 16px'}}
             />
-            <CardContent>
-                <div dangerouslySetInnerHTML={{ __html: html }}>
-                    
-                </div>
+            <CardContent style={{paddingTop: '0', paddingBottom: '0'}}>
+                <div dangerouslySetInnerHTML={{ __html: html }}/>
             </CardContent>
         </Card>
     )

@@ -35,7 +35,7 @@ const Profile = ({ print }) => {
         role="button"
         tabIndex="0"
         anchorTag={true}
-        anchorSize="xs"
+        anchorSize="small"
         href="#"
         className="btn btn-outline btn-success my-2 btn-lg"
         onClick={openPrintDialog}

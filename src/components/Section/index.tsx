@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Section = ({elements, title, withProgress, className, asRow, normalHeader, sectionHeaderClassName, print, gridProps}) => {
+const Section = ({elements, title, withProgress, normalHeader, sectionHeaderClassName, print, gridProps}) => {
     const classes = useStyles()
 
     const [active, setActive] = useState(0)
@@ -44,9 +44,6 @@ const Section = ({elements, title, withProgress, className, asRow, normalHeader,
             className={classes.root}
             item
             xs={1}
-            alignItems='center'
-            justify='center'
-            alignContent='center'
           >
                 <IconButton>
                     <Direction
@@ -78,7 +75,7 @@ const Section = ({elements, title, withProgress, className, asRow, normalHeader,
             return null
         }
         if (normalHeader) {
-            return (<Typography variant='h4' className={sectionHeaderClassName}>{title}</Typography>)
+            return (<Typography variant='h5' className={sectionHeaderClassName}>{title}</Typography>)
         }
         return (
             <SectionHeader
@@ -90,13 +87,8 @@ const Section = ({elements, title, withProgress, className, asRow, normalHeader,
             </SectionHeader>
         )
     }, [hasTitle, normalHeader, sectionHeaderClassName, title, print, withProgress, progressBar])
-    
     return (
-        <div
-            className={`section${
-            className !== undefined ? ` section-${className}` : ``
-            } ${asRow ? `as-row` : ``}`}
-        >
+        <div>
             {header}
             <Grid container {...gridProps}>
             {!print && withProgress ? elements[active] : elements}

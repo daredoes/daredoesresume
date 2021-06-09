@@ -1,5 +1,6 @@
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
+import LinkIcon from '@material-ui/icons/Link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 // Since DOM elements <a> cannot receive activeClassName,
@@ -18,9 +19,7 @@ const Link = ({
   const internal = /^\/(?!\/)/.test(to)
 
   const anchor = anchorTag ? (
-    <span className="center-span">
-      <FontAwesomeIcon className="align-middle" icon="link" size={anchorSize} />
-    </span>
+    <LinkIcon fontSize={anchorSize} />
   ) : null
 
   // Use Gatsby Link for internal links, and <a> for others

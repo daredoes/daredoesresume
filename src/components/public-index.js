@@ -5,21 +5,21 @@ import Profile from "./Web/Profile"
 import Hobbies from "./Hobbies"
 import Skills from "./Skills"
 import Contacts from "./Web/Contacts"
-import Educations from "./Educations"
+import Educations from "./Web/Educations"
 import Experiences from "./Web/Experiences"
-import Projects from "./Projects"
+import Projects from "./Web/Projects"
 
 import ResponsiveColumns from "./responsive-columns"
 
 const PublicIndex = () => {
   const columns = [
-    [<Experiences />, <Contacts />],
-    [<Projects />, <Educations />, <Skills />, <Hobbies />],
+    [<Experiences key='exp' />, <Contacts key='contact' />],
+    [<Projects key='projects' />, <Educations key='edu' />, <Skills key='skillz' />, <Hobbies  key='hobby' />],
   ]
   return (
     <Grid container spacing={3} direction='column' alignItems='center' justify='center' className="no-print">
       <Grid item xs={12} lg={8}>
-        <Paper elevation={5}>
+        <Paper elevation={3}>
           <Profile />
           <ResponsiveColumns items={columns} />
         </Paper>

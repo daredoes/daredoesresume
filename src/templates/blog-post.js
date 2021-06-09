@@ -1,11 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { kebabCase } from "lodash"
 import Helmet from "react-helmet"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
+import { graphql } from "gatsby"
+import Layout from "@components/NewLayout"
 import SEO from "@components/SEO"
-import Project from "../components/Project"
+import Project from "@components/Project"
 // import Content, { HTMLContent } from '../components/Content'
 
 const BlogPost = ({ data }) => {

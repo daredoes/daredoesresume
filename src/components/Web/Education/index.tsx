@@ -1,18 +1,16 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 
 import CardHeader from '@material-ui/core/CardHeader';
 import Card from '@material-ui/core/Card'
-import IconButton from '@material-ui/core/IconButton'
-import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 
 type Frontmatter = {
     title: string,
+    weight: number,
     printable: boolean,
     visible: boolean,
-    external_url: string,
-    icon: Array<any>
+    graduation_date: string,
+    display_date: string
 }
 
 type Props = {
@@ -23,21 +21,28 @@ type Props = {
 }
 
 const Contact = ({frontmatter, html, print}: Props) => {
-    const { title, icon, external_url } = frontmatter;
+    const { title, graduation_date } = frontmatter;
     return print ? (
-        <span className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></span> 
+        <div>
+            <div className="one-part-card-printed">
+                <h6 className="">
+                    {title}
+                </h6>
+                <h6 className="">
+                    {graduation_date}
+                </h6>
+            </div>
+            <div className="dangerous-html mx-2" dangerouslySetInnerHTML={{ __html: html}}>
+            </div> 
+        </div>
     ) : (
         <Card variant='outlined'>
             <CardHeader
             style={{ padding: '8px' }}
             avatar={
-                <Avatar aria-label="recipe">
-                    <a href={external_url} target="_blank" rel="noopener noreferrer">
-                        <IconButton>
-                            <FontAwesomeIcon icon={icon} fixedWidth />    
-                        </IconButton>
-                    </a>
-                </Avatar>
+                <Typography style={{ maxWidth: '75px'}} align='center'>
+                    {graduation_date}
+                </Typography>
             }
             subheader={(<div className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></div> )}
             title={title}

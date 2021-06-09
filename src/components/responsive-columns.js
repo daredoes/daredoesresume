@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid'
 
 export default class ResponsiveColumns extends React.Component {
   makeColumnsElementFromItems(items) {
-    const length = items.length / 12
     return items.map(function(columnChildren, columnNumber) {
       return (
         <Grid

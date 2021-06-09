@@ -11,7 +11,7 @@ class Experience extends React.Component {
         className="title text-info h4"
         to={external_url}
         anchorTag={true}
-        anchorSize="xs"
+        anchorSize="small"
         target="_blank"
         rel="noopener noreferrer"
       >

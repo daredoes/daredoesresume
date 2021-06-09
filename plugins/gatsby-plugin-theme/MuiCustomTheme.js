@@ -66,7 +66,12 @@ const myTheme = isDark => responsiveFontSizes(createMuiTheme({
                 '#gatsby-focus-wrapper': {
                     height: '100%',
                     backgroundColor: isDark ? BLACK : WHITE,
-                },
+				},
+				'.dangerous-html': {
+					'li > p': {
+						margin: 0
+					}
+				}
 
             },
 		},
@@ -99,28 +104,28 @@ const GlobalStyles = withStyles(theme => {
 			},
 			h1: {
 				...theme.typography.h2,
-				margin: theme.spacing(3, 0)
+				margin: theme.spacing(1, 0)
 			},
 			h2: {
 				...theme.typography.h3,
-				margin: theme.spacing(3, 0)
+				margin: theme.spacing(1, 0)
 			},
 			h3: {
 				...theme.typography.h4,
-				margin: theme.spacing(3, 0)
+				margin: theme.spacing(1, 0)
 			},
 			h4: {
 				...theme.typography.h5,
-				margin: theme.spacing(3, 0)
+				margin: theme.spacing(1, 0)
 			},
 			h5: {
 				...theme.typography.h6,
-				margin: theme.spacing(3, 0)
+				margin: theme.spacing(1, 0)
 			},
 			// don't use h6
 			p: {
 				...theme.typography.body1,
-				margin: theme.spacing(3, 0),
+				margin: theme.spacing(1, 0),
 				lineHeight: 1.75
 			},
 			li: {
