@@ -1,7 +1,7 @@
 import React from "react"
 
 import Profile from "./profile"
-import Contacts from "./Contacts"
+import Contacts from "./Web/Contacts"
 import Experiences from "./Experiences"
 import Educations from "./Educations"
 import Skills from "./Skills"

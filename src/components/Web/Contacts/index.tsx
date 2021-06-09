@@ -1,11 +1,11 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Grid from '@material-ui/core/Grid'
 
-import Section from "./Section"
-import Contact from "./Contact"
+import Section from "@components/Section"
+import Contact from "@components/Web/Contact"
 
-const Contacts = ({ print }) => {
+const Contacts = ({ print }: { print: boolean}) => {
   const data = useStaticQuery(graphql`
     query {
       contacts: allMarkdownRemark(
@@ -32,27 +32,31 @@ const Contacts = ({ print }) => {
     }
   `)
 
-  const elements = data.contacts.edges.filter(
-    edge =>
-      edge.node.frontmatter &&
-      (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
-  )
-  const children = elements.map(edge => (
-    <Contact print={print} key={edge.node.id} {...edge.node} />
-  ))
+  
+  const elements = useMemo(() => {
+      return data.contacts.edges.filter(
+        edge =>
+          edge.node.frontmatter &&
+          (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
+      ).map(edge => (
+          <Grid item key={edge.node.id}>
+              <Contact print={print} {...edge.node} />
+          </Grid>
+      ))
+  }, [data])
   return (
     <Section
-      elements={children}
+      elements={elements}
       className="contacts"
       title={print ? null : `Contact`}
       print={print}
       asRow={print}
+      gridProps={{
+          direction: 'column',
+          spacing: 1
+      }}
     />
   )
-}
-
-Contacts.propTypes = {
-  print: PropTypes.bool,
 }
 
 Contacts.defaultProps = {

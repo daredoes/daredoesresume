@@ -1,0 +1,25 @@
+@import "scroll";
+
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 5px;
+  display: inline-block;
+  margin-top: -80px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(../images/patterns/darkness.png);
+  content: url(../images//icons/avatar.gif);
+  border-width: 0.25rem !important;
+  border-style: solid;
+  @extend .scroll;
+
+  img {
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+    border-radius: 50%;
+  }
+}

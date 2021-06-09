@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Section from "./section"
+import Section from "./Section"
 import Experience from "./Experience"
 
 const Experiences = ({ print }) => {

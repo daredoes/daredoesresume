@@ -4,7 +4,7 @@ import { kebabCase } from "lodash"
 import Helmet from "react-helmet"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "@components/SEO"
 import Project from "../components/Project"
 // import Content, { HTMLContent } from '../components/Content'
 

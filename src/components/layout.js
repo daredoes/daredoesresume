@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import Footer from "./footer"
+import Footer from "./Footer"
 import "../scss/layout.sass"
 
 import { library } from "@fortawesome/fontawesome-svg-core"
