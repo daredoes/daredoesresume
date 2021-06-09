@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { kebabCase } from "lodash"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Link from "./link"
+import Link from "./Link"
 import Section from "./Section"
 
 class Project extends React.Component {
