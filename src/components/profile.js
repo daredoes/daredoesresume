@@ -3,8 +3,9 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Link from "./Link"
 import { openPrintDialog } from "./helpers"
+import useDetectPrint from 'use-detect-print';
 
-const Profile = ({ print }) => {
+const Profile = () => {
   const data = useStaticQuery(graphql`
     query {
       markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
@@ -21,6 +22,7 @@ const Profile = ({ print }) => {
     }
   `)
   const frontmatter = data.markdownRemark.frontmatter
+  const print = useDetectPrint()
 
   return print ? (
     <div className="profile-name">{frontmatter.print_name}</div>

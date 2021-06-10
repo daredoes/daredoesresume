@@ -1,19 +1,19 @@
 import React from "react"
 
-import Profile from "./profile"
+import Profile from "./Web/Profile"
 import Contacts from "./Web/Contacts"
-import Experiences from "./Experiences"
-import Educations from "./Educations"
-import Skills from "./Skills"
+import Experiences from "./Web/Experiences"
+import Educations from "./Web/Educations"
+import Skills from "./Web/Skills"
 
 const PrintIndex = () => {
   return (
     <div className="print-only print-container p-1">
-      <Profile print />
-      <Contacts print />
-      <Experiences print />
-      <Educations print />
-      <Skills print />
+      <Profile />
+      <Contacts />
+      <Experiences />
+      <Educations />
+      <Skills />
     </div>
   )
 }

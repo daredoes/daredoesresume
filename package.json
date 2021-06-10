@@ -45,7 +45,8 @@
     "react-dom": "^16.13.1",
     "react-fontawesome": "^1.7.1",
     "react-helmet": "^6.1.0",
-    "resolve-url-loader": "^3.1.1"
+    "resolve-url-loader": "^3.1.1",
+    "use-detect-print": "^0.0.2"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

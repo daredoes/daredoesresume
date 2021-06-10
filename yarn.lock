@@ -17109,6 +17109,11 @@ use-composed-ref@^1.0.0:
   dependencies:
     ts-essentials "^2.0.3"
 
+use-detect-print@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/use-detect-print/-/use-detect-print-0.0.2.tgz#0482f2d63c03c04887ce4b1163be1ce1cf738393"
+  integrity sha512-J0fu46/PNDuuP0qyXkabwi9nJtPPZmOOr6p6KLyEGHOA1fWqREMliS4Bcj7znp9zVrDdq67vpzX55PGJamK+2Q==
+
 use-isomorphic-layout-effect@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.1.tgz#7bb6589170cd2987a152042f9084f9effb75c225"

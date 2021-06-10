@@ -4,8 +4,9 @@ import Grid from '@material-ui/core/Grid'
 
 import Section from "@components/Section"
 import Contact from "@components/Web/Contact"
+import useDetectPrint from 'use-detect-print';
 
-const Contacts = ({ print }: { print: boolean}) => {
+const Contacts = () => {
   const data = useStaticQuery(graphql`
     query {
       contacts: allMarkdownRemark(
@@ -32,18 +33,20 @@ const Contacts = ({ print }: { print: boolean}) => {
     }
   `)
 
+  const print = useDetectPrint()
+
   
   const elements = useMemo(() => {
       return data.contacts.edges.filter(
         edge =>
           edge.node.frontmatter &&
-          (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
+          (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map(edge => (
           <Grid item key={edge.node.id}>
-              <Contact print={print} {...edge.node} />
+              <Contact {...edge.node} />
           </Grid>
       ))
-  }, [data])
+  }, [data, print])
   return (
     <Section
       elements={elements}
@@ -52,7 +55,7 @@ const Contacts = ({ print }: { print: boolean}) => {
       print={print}
       asRow={print}
       gridProps={{
-          direction: 'column',
+          direction: print ? 'row' : 'column',
           spacing: 1
       }}
     />

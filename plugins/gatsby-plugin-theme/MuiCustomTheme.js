@@ -69,8 +69,7 @@ const myTheme = isDark => responsiveFontSizes(createMuiTheme({
 				},
 				'.dangerous-html li > p': {
 						margin: 0
-				}
-
+				},
             },
 		},
 		MuiGrid: {

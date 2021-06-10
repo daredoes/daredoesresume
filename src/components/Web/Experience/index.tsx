@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import useDetectPrint from 'use-detect-print';
+
 import Link from '@components/Link'
 
 type Frontmatter = {
@@ -19,13 +21,13 @@ type Frontmatter = {
 
 type Props = {
     frontmatter: Frontmatter,
-    html: string,
-    print?: boolean
+    html: string
 
 }
 
-const Experience: React.FunctionComponent<Props> = ({frontmatter, html, print}) => {
+const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
     const { title, display_date, name, external_url } = frontmatter;
+    const print = useDetectPrint()
 
     const LinkOrSpan = useMemo(() => {
         return external_url ? (

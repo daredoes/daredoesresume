@@ -11,7 +11,8 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import { styled, makeStyles } from '@material-ui/styles'
 
-import { Grid } from '@material-ui/core'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 
 import Header from '@components/NewHeader'
 import Footer from '@components/Footer'
@@ -37,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Layout = ({ children }) => {
+const Layout = ({ children, print }) => {
 
   const classes = useStyles()
     
@@ -53,18 +54,20 @@ const Layout = ({ children }) => {
         }
       `}
       render={data => (
-        <Grid className={classes.root} alignItems='center' container wrap={'nowrap'} justify='space-between' direction='column'>
-            <Grid item xs={12}>
-                <Header siteTitle={data.site.siteMetadata.title} />
-            </Grid>
-            <Grid item color="primary">    
-                <main>{children}</main>
-            </Grid>
-            <Grid item xs={12}>
-              <Footer printablePage={true} />
-            </Grid>
-            <Fab key="darkMode" />
-        </Grid>
+        <Box displayPrint={print ? 'block' : 'none'}>
+          <Grid className={classes.root} alignItems='center' container wrap={'nowrap'} justify='space-between' direction='column'>
+              <Grid item xs={12}>
+                  <Header siteTitle={data.site.siteMetadata.title} />
+              </Grid>
+              <Grid item color="primary">    
+                  <main>{children}</main>
+              </Grid>
+              <Grid item xs={12}>
+                <Footer printablePage={true} />
+              </Grid>
+              <Fab key="darkMode" />
+          </Grid>
+        </Box>
       )}
     />
   )
@@ -72,6 +75,7 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  print: PropTypes.bool,
 }
 
 export default Layout

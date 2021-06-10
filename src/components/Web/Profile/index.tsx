@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import PrintIcon from '@material-ui/icons/PrintOutlined'
 import { makeStyles } from '@material-ui/core/styles';
+import useDetectPrint from 'use-detect-print';
 
 import { openPrintDialog } from "@components/helpers"
 import '@src/scss/profile.scss'
@@ -20,7 +21,7 @@ const useStyles = makeStyles(() => ({
     }
   }));
 
-const Profile = ({ print }: { print: boolean}) => {
+const Profile = () => {
   const data = useStaticQuery(graphql`
     query {
         markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
@@ -37,15 +38,13 @@ const Profile = ({ print }: { print: boolean}) => {
     }
   `)
 
-  const frontmatter = data.markdownRemark.frontmatter
-  if (print) {
-      return (
-          <Typography>{frontmatter.print_name}</Typography>
-      )
-  }
-  const classes = useStyles()
+  const print = useDetectPrint()
 
-  return (
+  const frontmatter = data.markdownRemark.frontmatter
+  const classes = useStyles()
+  return print ? (
+        <Typography>{frontmatter.print_name}</Typography>
+    ) : (
       <Grid classes={{root: classes.grid}} spacing={2} container direction='column' justify='flex-start' alignItems='center'>
           <div className="profile-photo">
           </div>

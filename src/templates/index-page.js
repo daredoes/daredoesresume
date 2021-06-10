@@ -10,7 +10,7 @@ const IndexPage = () => {
   return (
     <>
       <PrintIndex />
-      <Layout className="index-page profile-picture no-print" printablePage>
+      <Layout>
         <SEO title="Home" />
         <PublicIndex />
       </Layout>

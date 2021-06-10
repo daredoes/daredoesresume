@@ -2,11 +2,12 @@ import React, { useMemo } from 'react'
 import { kebabCase } from "lodash"
 
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
 import TagIcon from '@material-ui/icons/Label'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+
 import Link from '@components/Link'
 import Section from '@components/Section'
 
@@ -54,9 +55,7 @@ const Project: React.FunctionComponent<Props> = ({frontmatter, html, fields, exc
         return tags.map(tag => (
             <Grid item key={tag + `tag`}>
                 <Link to={`/tags/${kebabCase(tag)}/`} style={{boxShadow: 'none'}}>
-                <Button variant='contained' color='secondary' size='small' startIcon={<TagIcon />}>                  
-                {tag}
-                </Button>
+                <Chip clickable variant='outlined' label={tag} color='secondary' size='small' icon={<TagIcon />}/>
                 </Link>
             </Grid>
           ))

@@ -2,8 +2,8 @@ import React from "react"
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Profile from "./Web/Profile"
-import Hobbies from "./Hobbies"
-import Skills from "./Skills"
+import Hobbies from "./Web/Hobbies"
+import Skills from "./Web/Skills"
 import Contacts from "./Web/Contacts"
 import Educations from "./Web/Educations"
 import Experiences from "./Web/Experiences"

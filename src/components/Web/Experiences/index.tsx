@@ -1,11 +1,12 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Grid from '@material-ui/core/Grid'
+import useDetectPrint from 'use-detect-print';
 
 import Section from "@components/Section"
 import Experience from "@components/Web/Experience"
 
-const Experiences = ({ print }: { print: boolean}) => {
+const Experiences = () => {
   const data = useStaticQuery(graphql`
   query {
     experiences: allMarkdownRemark(
@@ -39,6 +40,7 @@ const Experiences = ({ print }: { print: boolean}) => {
     }
   }
   `)
+  const print = useDetectPrint()
 
   
   const elements = useMemo(() => {
@@ -48,10 +50,10 @@ const Experiences = ({ print }: { print: boolean}) => {
           (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
       ).map(edge => (
           <Grid item key={edge.node.id}>
-              <Experience print={print} {...edge.node} />
+              <Experience {...edge.node} />
           </Grid>
       ))
-  }, [data])
+  }, [data, print])
   return (
     <Section
       elements={elements}
