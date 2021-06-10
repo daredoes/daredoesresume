@@ -54,7 +54,7 @@ const Project: React.FunctionComponent<Props> = ({frontmatter, html, fields, exc
         return tags.map(tag => (
             <Grid item key={tag + `tag`}>
                 <Link to={`/tags/${kebabCase(tag)}/`} style={{boxShadow: 'none'}}>
-                <Button variant='outlined' size='small' startIcon={<TagIcon />}>                  
+                <Button variant='contained' color='secondary' size='small' startIcon={<TagIcon />}>                  
                 {tag}
                 </Button>
                 </Link>
@@ -65,11 +65,10 @@ const Project: React.FunctionComponent<Props> = ({frontmatter, html, fields, exc
 
     const gridProps = {
         direction: 'row',
-        justify: 'space-between',
+        justify: 'flex-start',
         alignItems: 'flex-start',
         spacing: 1
     }
-    console.log(gridProps)
     return nonLinkTitle ? (
         <Section
         elements={
@@ -91,6 +90,7 @@ const Project: React.FunctionComponent<Props> = ({frontmatter, html, fields, exc
                 title="Tags"
                 gridProps={gridProps}
               />
+              <br/>
             </div>
           </div>
         }
@@ -116,7 +116,7 @@ const Project: React.FunctionComponent<Props> = ({frontmatter, html, fields, exc
             titleTypographyProps={{ variant: 'h5'}}
             style={{padding: '8px 16px'}}
             />
-            <CardContent style={{paddingTop: '0', paddingBottom: '0'}}>
+            <CardContent style={{paddingTop: '0', paddingBottom: '4px'}}>
                 <div dangerouslySetInnerHTML={{ __html: html }}/>
                 <Section
                     elements={tagElements}

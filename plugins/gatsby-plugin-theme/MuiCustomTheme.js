@@ -67,10 +67,8 @@ const myTheme = isDark => responsiveFontSizes(createMuiTheme({
                     height: '100%',
                     backgroundColor: isDark ? BLACK : WHITE,
 				},
-				'.dangerous-html': {
-					'li > p': {
+				'.dangerous-html li > p': {
 						margin: 0
-					}
 				}
 
             },

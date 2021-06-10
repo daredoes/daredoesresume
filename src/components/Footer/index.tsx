@@ -22,7 +22,7 @@ const Footer: React.FunctionComponent<Props> = ({ children, print }) => {
         <footer className="no-print">
             <Grid container direction='column' justify='space-between' alignItems='center'>
                 <Grid item>
-                    <IconButton onClick={openPrintDialog}>
+                    <IconButton color='secondary' title='Print A Formatted Resumé' onClick={openPrintDialog}>
                         <PrintIcon />
                     </IconButton>
                 </Grid>

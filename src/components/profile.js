@@ -37,6 +37,7 @@ const Profile = ({ print }) => {
         anchorTag={true}
         anchorSize="small"
         href="#"
+        title="Print a Formatted Resumé"
         className="btn btn-outline btn-success my-2 btn-lg"
         onClick={openPrintDialog}
       >

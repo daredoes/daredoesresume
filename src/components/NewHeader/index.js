@@ -65,7 +65,6 @@ const Header = ({ siteTitle }) => {
 
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down('md'));
-  console.log(matches)
   const [open, setOpen] = React.useState(false)
 
   function handleDrawerOpen() {

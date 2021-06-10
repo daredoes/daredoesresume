@@ -33,14 +33,14 @@ const Contact = ({frontmatter, html, print}: Props) => {
             avatar={
                 <Avatar aria-label="recipe">
                     <a href={external_url} target="_blank" rel="noopener noreferrer">
-                        <IconButton>
+                        <IconButton color='secondary'>
                             <FontAwesomeIcon icon={icon} fixedWidth />    
                         </IconButton>
                     </a>
                 </Avatar>
             }
             subheader={(<div className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></div> )}
-            title={title}
+            title={(<a href={external_url} target="_blank" rel="noopener noreferrer">{title}</a>)}
             titleTypographyProps={{ variant: 'h6'}}
             />
         </Card>
