@@ -1,6 +1,8 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
 
 import Section from "@components/Section"
 import Contact from "@components/Web/Contact"
@@ -41,9 +43,9 @@ const Contacts = () => {
         edge =>
           edge.node.frontmatter &&
           (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
-      ).map(edge => (
-          <Grid item key={edge.node.id}>
-              <Contact {...edge.node} />
+      ).map((edge, index) => (
+          <Grid component={Box} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
+              <Contact index={index} {...edge.node} />
           </Grid>
       ))
   }, [data, print])

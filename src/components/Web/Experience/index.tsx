@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -26,8 +27,7 @@ type Props = {
 }
 
 const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
-    const { title, display_date, name, external_url } = frontmatter;
-    const print = useDetectPrint()
+    const { title, display_date, name, external_url, printable, visible } = frontmatter;
 
     const LinkOrSpan = useMemo(() => {
         return external_url ? (
@@ -46,24 +46,30 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
     }, [external_url, name])
 
 
-    return print ? (
-        <span className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></span> 
-    ) : (
-        <Card variant='outlined'>
-            <CardHeader
-            subheader={display_date}
-            subheaderTypographyProps={{ variant: 'h6'}}
-            title={(
-            <>
-            {title}&nbsp;{LinkOrSpan}
-            </>)}
-            titleTypographyProps={{ variant: 'h5'}}
-            style={{padding: '8px 16px'}}
-            />
-            <CardContent style={{paddingTop: '0', paddingBottom: '0'}}>
-                <div dangerouslySetInnerHTML={{ __html: html }}/>
-            </CardContent>
-        </Card>
+    return (
+        <>
+        {printable && (<Box displayPrint='block' display='none'>
+            <span className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></span> 
+        </Box>)}
+        {visible && <Box displayPrint='none'>
+            <Card variant='outlined'>
+                <CardHeader
+                subheader={display_date}
+                subheaderTypographyProps={{ variant: 'h6'}}
+                title={(
+                <>
+                {title}&nbsp;{LinkOrSpan}
+                </>)}
+                titleTypographyProps={{ variant: 'h5'}}
+                style={{padding: '8px 16px'}}
+                />
+                <CardContent style={{paddingTop: '0', paddingBottom: '0'}}>
+                    <div dangerouslySetInnerHTML={{ __html: html }}/>
+                </CardContent>
+            </Card>
+        </Box>}
+        
+        </>
     )
 
 }

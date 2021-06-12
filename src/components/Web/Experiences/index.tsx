@@ -1,6 +1,7 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
 import useDetectPrint from 'use-detect-print';
 
 import Section from "@components/Section"
@@ -47,9 +48,9 @@ const Experiences = () => {
       return data.experiences.edges.filter(
         edge =>
           edge.node.frontmatter &&
-          (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
+          (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map(edge => (
-          <Grid item key={edge.node.id}>
+          <Grid component={Box} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
               <Experience {...edge.node} />
           </Grid>
       ))

@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box'
 import Card from '@material-ui/core/Card'
 import IconButton from '@material-ui/core/IconButton'
 import Avatar from '@material-ui/core/Avatar';
-import useDetectPrint from 'use-detect-print';
+import Typography from '@material-ui/core/Typography'
 
 type Frontmatter = {
     title: string,
@@ -19,16 +19,25 @@ type Frontmatter = {
 
 type Props = {
     frontmatter: Frontmatter,
-    html: string
-
+    html: string,
+    index?: number
 }
 
-const Contact = ({frontmatter, html}: Props) => {
+const Contact = ({frontmatter, html, index}: Props) => {
     const { title, icon, external_url, printable, visible } = frontmatter;
+    const printableUrl = React.useMemo(() => {
+        if (external_url.indexOf(':') != -1) {
+            if (external_url.indexOf('http') == 0) {
+                return external_url
+            }
+            return external_url.split(':')[1]
+        }
+        return external_url
+    }, [external_url])
     return (
         <>
-        {printable && <Box display="none" displayPrint='block'>
-            <span className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></span> 
+        {printable && <Box display="none" displayPrint='block' className="dangerous-html">
+            <Typography style={{fontWeight: 'bolder'}} component={'a'} href={external_url}>{index ? '♦ ' : ''}{printableUrl}</Typography> 
         </Box>}
         {visible && <Box displayPrint="none">
             <Card variant='outlined'>

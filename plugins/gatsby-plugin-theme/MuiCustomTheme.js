@@ -67,9 +67,12 @@ const myTheme = isDark => responsiveFontSizes(createMuiTheme({
                     height: '100%',
                     backgroundColor: isDark ? BLACK : WHITE,
 				},
-				'.dangerous-html li > p': {
+				'.dangerous-html li > p, .dangerous-html p': {
 						margin: 0
 				},
+				'.dangerous-html a': {
+					boxShadow: 'none'
+				}
             },
 		},
 		MuiGrid: {

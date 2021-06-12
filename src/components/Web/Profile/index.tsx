@@ -43,7 +43,11 @@ const Profile = () => {
   const frontmatter = data.markdownRemark.frontmatter
   const classes = useStyles()
   return print ? (
-        <Typography>{frontmatter.print_name}</Typography>
+    <Grid container spacing={1}>
+      <Grid item>
+        <Typography variant='h5'>{frontmatter.print_name}</Typography>
+      </Grid>
+    </Grid>
     ) : (
       <Grid classes={{root: classes.grid}} spacing={2} container direction='column' justify='flex-start' alignItems='center'>
           <div className="profile-photo">
