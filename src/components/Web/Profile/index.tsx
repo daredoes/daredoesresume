@@ -1,12 +1,12 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import PrintIcon from '@material-ui/icons/PrintOutlined'
 import { makeStyles } from '@material-ui/core/styles';
-import useDetectPrint from 'use-detect-print';
 
 import { openPrintDialog } from "@components/helpers"
 import '@src/scss/profile.scss'
@@ -38,37 +38,40 @@ const Profile = () => {
     }
   `)
 
-  const print = useDetectPrint()
-
   const frontmatter = data.markdownRemark.frontmatter
   const classes = useStyles()
-  return print ? (
-    <Grid container spacing={1}>
-      <Grid item>
-        <Typography variant='h5'>{frontmatter.print_name}</Typography>
-      </Grid>
-    </Grid>
-    ) : (
-      <Grid classes={{root: classes.grid}} spacing={2} container direction='column' justify='flex-start' alignItems='center'>
-          <div className="profile-photo">
-          </div>
+  return (
+    <>
+      <Box displayPrint='block' display='none'>
+        <Grid container spacing={1}>
           <Grid item>
-              <Typography className={classes.root} variant='h5'>
-                  Call me <Typography className={classes.root} color='textSecondary' variant='h5' component='span'>{frontmatter.public_name}</Typography>
-              </Typography>
+            <Typography variant='h5'>{frontmatter.print_name}</Typography>
           </Grid>
-          <Grid item>
-              <Typography>
-              <Button
-                variant='outlined'
-                onClick={openPrintDialog}
-                startIcon={<PrintIcon/>}
-            >
-                Print Resumé/CV PDF
-            </Button>
-              </Typography>
-          </Grid>
-      </Grid>
+        </Grid>
+      </Box>
+      <Box displayPrint='none'>
+        <Grid classes={{root: classes.grid}} spacing={2} container direction='column' justify='flex-start' alignItems='center'>
+            <div className="profile-photo">
+            </div>
+            <Grid item>
+                <Typography className={classes.root} variant='h5'>
+                    Call me <Typography className={classes.root} color='textSecondary' variant='h5' component='span'>{frontmatter.public_name}</Typography>
+                </Typography>
+            </Grid>
+            <Grid item>
+                <Typography>
+                <Button
+                  variant='outlined'
+                  onClick={openPrintDialog}
+                  startIcon={<PrintIcon/>}
+              >
+                  Print Resumé/CV PDF
+              </Button>
+                </Typography>
+            </Grid>
+        </Grid>
+      </Box>
+    </>
   )
 }
 

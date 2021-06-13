@@ -31,13 +31,17 @@ const SectionHeader: React.FunctionComponent<Props> = ({ title, children, print,
         return print ? {paddingTop: '0', paddingBottom: '0'} : {}
     }, [print])
 
+    const hrStyle = useMemo(() => {
+        return print ? {marginBlockStart: '0.25em', marginBlockEnd: '0.25em'} : {}
+    }, [print])
+
     return (
         <Grid container spacing={1} direction='column' justify='space-between'>
             <Grid style={printStyle} item xs={12}>
                 <Typography variant='h5' classes={{root: print ? classes.print : classes.web}} className={className}>{finalTitle}</Typography>
             </Grid>
             <Grid style={printStyle} item xs={12}>
-                <hr/>
+                <hr style={hrStyle}/>
             </Grid>
             <Grid style={printStyle} item xs={12}>
                 {children}

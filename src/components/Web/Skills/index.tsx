@@ -1,14 +1,13 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import useDetectPrint from 'use-detect-print';
 
 import Section from "@components/Section"
 import Skill from "@components/Web/Skill"
 
 const Skills = () => {
 
-  const print = useDetectPrint()
   const data = useStaticQuery(graphql`
     query {
       skills: allMarkdownRemark(
@@ -41,13 +40,13 @@ const Skills = () => {
       return data.skills.edges.filter(
         edge =>
           edge.node.frontmatter &&
-          (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
+          (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map(edge => (
-          <Grid item key={edge.node.id}>
+          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
               <Skill {...edge.node} />
           </Grid>
       ))
-  }, [data, print])
+  }, [data])
 
   const gridProps = {
       direction: 'row',

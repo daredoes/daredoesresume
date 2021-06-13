@@ -2,11 +2,9 @@ import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles'
 
 import Section from "@components/Section"
 import Contact from "@components/Web/Contact"
-import useDetectPrint from 'use-detect-print';
 
 const Contacts = () => {
   const data = useStaticQuery(graphql`
@@ -34,9 +32,6 @@ const Contacts = () => {
       }
     }
   `)
-
-  const print = useDetectPrint()
-
   
   const elements = useMemo(() => {
       return data.contacts.edges.filter(
@@ -44,23 +39,37 @@ const Contacts = () => {
           edge.node.frontmatter &&
           (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map((edge, index) => (
-          <Grid component={Box} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
+          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
               <Contact index={index} {...edge.node} />
           </Grid>
       ))
-  }, [data, print])
+  }, [data])
   return (
-    <Section
-      elements={elements}
-      className="contacts"
-      title={print ? null : `Contact`}
-      print={print}
-      asRow={print}
-      gridProps={{
-          direction: print ? 'row' : 'column',
-          spacing: 1
-      }}
-    />
+    <>
+      <Box display='none' displayPrint='block'>
+        <Section
+          elements={elements}
+          className="contacts"
+          print={true}
+          asRow={true}
+          gridProps={{
+              direction: 'row',
+              spacing: 1
+          }}
+        />
+      </Box>
+      <Box displayPrint='none'>
+        <Section
+          elements={elements}
+          className="contacts"
+          title={`Contact`}
+          gridProps={{
+              direction: 'column',
+              spacing: 1
+          }}
+        />
+      </Box>
+    </>
   )
 }
 

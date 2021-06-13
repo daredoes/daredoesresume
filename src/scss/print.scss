@@ -3,6 +3,9 @@
 }
 
 @media print {
+  html {
+    font-size: 80%;
+  }
   .no-print {
     display: none;
   }

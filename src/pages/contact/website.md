@@ -1,7 +1,7 @@
 ---
 title: Website
 external_url: 'https://daredoes.work'
-icon: ['fab', 'github']
+icon: ['fa', 'link']
 weight: 50
 printable: true
 visible: false

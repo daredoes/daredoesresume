@@ -67,11 +67,19 @@ const myTheme = isDark => responsiveFontSizes(createMuiTheme({
                     height: '100%',
                     backgroundColor: isDark ? BLACK : WHITE,
 				},
-				'.dangerous-html li > p, .dangerous-html p': {
+				'.print-only .dangerous-html li > p, .dangerous-html p': {
 						margin: 0
 				},
-				'.dangerous-html a': {
+				'.print-only .dangerous-html a': {
 					boxShadow: 'none'
+				},
+				'.print-only .dangerous-html > ul > li': {
+					listStyleType: 'square',
+					listStylePosition: 'outside !important'
+				},
+				'.print-only .dangerous-html > ul': {
+					marginBlockStart: '0',
+					marginBlockEnd: '0',
 				}
             },
 		},

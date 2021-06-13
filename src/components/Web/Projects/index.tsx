@@ -1,7 +1,7 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import useDetectPrint from 'use-detect-print';
 
 import Section from "@components/Section"
 import Project from "@components/Web/Project"
@@ -37,33 +37,48 @@ const Projects = () => {
   }
   `)
 
-  const print = useDetectPrint()
-
-  
   const elements = useMemo(() => {
       return data.projects.edges.filter(
         edge =>
           edge.node.frontmatter &&
-          (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
+          (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map(edge => (
-          <Grid item key={edge.node.id}>
+          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
               <Project {...edge.node} />
           </Grid>
       ))
-  }, [data, print])
+  }, [data])
   return (
-    <Section
-      elements={elements}
-      className="projects"
-      title="Projects &amp; Blog Posts"
-      withProgress={elements.length > 2}
-      gridProps={{
-          direction: 'column',
-          spacing: 1,
-          alignItems: 'center',
-          justify: 'center'
-      }}
-    />
+    <>
+      {/* <Box display='none' displayPrint='block'>
+        <Section
+          elements={elements}
+          className="projects"
+          title="Projects &amp; Blog Posts"
+          withProgress={elements.length > 2}
+          gridProps={{
+              direction: 'column',
+              spacing: 1,
+              alignItems: 'center',
+              justify: 'center'
+          }}
+        />
+      </Box> */}
+      <Box displayPrint='none'>
+        <Section
+          elements={elements}
+          className="projects"
+          title="Projects &amp; Blog Posts"
+          withProgress={elements.length > 2}
+          gridProps={{
+              direction: 'column',
+              spacing: 1,
+              alignItems: 'center',
+              justify: 'center'
+          }}
+        />
+      </Box>
+    </>
   )
 }
 

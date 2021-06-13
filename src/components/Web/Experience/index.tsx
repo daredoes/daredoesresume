@@ -2,10 +2,10 @@ import React, { useMemo } from 'react'
 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import useDetectPrint from 'use-detect-print';
 
 import Link from '@components/Link'
 
@@ -48,9 +48,29 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
 
     return (
         <>
-        {printable && (<Box displayPrint='block' display='none'>
-            <span className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></span> 
-        </Box>)}
+        {printable && (
+            <Box displayPrint='block' display='none'>
+                <Grid container direction='column'>
+                    <Grid item>
+                        <Grid container justify='space-between' alignItems='center'>
+                            <Grid item>
+                                <Typography style={{fontWeight: 'bolder'}} variant='subtitle1'>
+                                    {name} - {title}
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Typography style={{fontWeight: 'bolder'}} variant='subtitle1'>
+                                    {display_date}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <span className="dangerous-html" dangerouslySetInnerHTML={{ __html: html}}></span> 
+                    </Grid>
+                </Grid>
+            </Box>
+        )}
         {visible && <Box displayPrint='none'>
             <Card variant='outlined'>
                 <CardHeader

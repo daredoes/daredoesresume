@@ -37,7 +37,10 @@ const Contact = ({frontmatter, html, index}: Props) => {
     return (
         <>
         {printable && <Box display="none" displayPrint='block' className="dangerous-html">
-            <Typography style={{fontWeight: 'bolder'}} component={'a'} href={external_url}>{index ? '♦ ' : ''}{printableUrl}</Typography> 
+            <Typography style={{fontWeight: 'bolder'}} variant='caption' component='span'>
+                <FontAwesomeIcon icon={icon} fixedWidth />&nbsp; 
+            </Typography>
+            <Typography style={{fontWeight: 'bolder'}} variant='caption' component={'a'} href={external_url}>{printableUrl}</Typography> 
         </Box>}
         {visible && <Box displayPrint="none">
             <Card variant='outlined'>

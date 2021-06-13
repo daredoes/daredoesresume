@@ -1,4 +1,5 @@
 import React from "react"
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Profile from "./Web/Profile"
@@ -17,14 +18,16 @@ const PublicIndex = () => {
     [<Projects key='projects' />, <Educations key='edu' />, <Skills key='skillz' />, <Hobbies  key='hobby' />],
   ]
   return (
-    <Grid container spacing={3} direction='column' alignItems='center' justify='center' className="no-print">
-      <Grid item xs={12} lg={8}>
-        <Paper elevation={3}>
-          <Profile />
-          <ResponsiveColumns items={columns} />
-        </Paper>
+    <Box displayPrint="none">
+      <Grid container spacing={3} direction='column' alignItems='center' justify='center' className="no-print">
+        <Grid item xs={12} lg={8}>
+          <Paper elevation={3}>
+            <Profile />
+            <ResponsiveColumns items={columns} />
+          </Paper>
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   )
 }
 

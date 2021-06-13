@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Box from '@material-ui/core/Box'
 import { useStaticQuery, graphql } from "gatsby"
 import Link from "./Link"
 import { openPrintDialog } from "./helpers"
-import useDetectPrint from 'use-detect-print';
 
 const Profile = () => {
   const data = useStaticQuery(graphql`
@@ -22,39 +22,35 @@ const Profile = () => {
     }
   `)
   const frontmatter = data.markdownRemark.frontmatter
-  const print = useDetectPrint()
 
-  return print ? (
-    <div className="profile-name">{frontmatter.print_name}</div>
-  ) : (
-    <div className="w-100 text-center">
-      <div className="profile-photo"></div>
-      <br />
-      <p className="h3 text-uppercase font-weight-bold text-light">
-        Call me <span className="text-dark">{frontmatter.public_name}</span>
-      </p>
-      <Link
-        role="button"
-        tabIndex="0"
-        anchorTag={true}
-        anchorSize="small"
-        href="#"
-        title="Print a Formatted Resumé"
-        className="btn btn-outline btn-success my-2 btn-lg"
-        onClick={openPrintDialog}
-      >
-        Print Resumé/CV PDF
-      </Link>
-    </div>
+  return (
+    <>
+      <Box displayPrint='block' display='none'>
+        <div className="profile-name">{frontmatter.print_name}</div>
+      </Box>
+      <Box displayPrint='none'>
+        <div className="w-100 text-center">
+          <div className="profile-photo"></div>
+          <br />
+          <p className="h3 text-uppercase font-weight-bold text-light">
+            Call me <span className="text-dark">{frontmatter.public_name}</span>
+          </p>
+          <Link
+            role="button"
+            tabIndex="0"
+            anchorTag={true}
+            anchorSize="small"
+            href="#"
+            title="Print a Formatted Resumé"
+            className="btn btn-outline btn-success my-2 btn-lg"
+            onClick={openPrintDialog}
+          >
+            Print Resumé/CV PDF
+          </Link>
+        </div>
+      </Box>
+    </>
   )
-}
-
-Profile.propTypes = {
-  print: PropTypes.bool,
-}
-
-Profile.defaultProps = {
-  print: false,
 }
 
 export default Profile
