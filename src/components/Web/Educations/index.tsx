@@ -1,11 +1,12 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 
 import Section from "@components/Section"
 import Education from "@components/Web/Education"
 
-const Educations = ({ print }: { print: boolean}) => {
+const Educations = () => {
   const data = useStaticQuery(graphql`
     query {
       educations: allMarkdownRemark(
@@ -43,24 +44,39 @@ const Educations = ({ print }: { print: boolean}) => {
       return data.educations.edges.filter(
         edge =>
           edge.node.frontmatter &&
-          (print ? edge.node.frontmatter.printable : edge.node.frontmatter.visible)
+          (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map(edge => (
-          <Grid item key={edge.node.id}>
-              <Education print={print} {...edge.node} />
+          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
+              <Education {...edge.node} />
           </Grid>
       ))
   }, [data])
   return (
-    <Section
-      elements={elements}
-      className="educations"
-      title="Education"
-      print={print}
-      gridProps={{
-          direction: 'column',
-          spacing: 1
-      }}
-    />
+    <>
+      <Box display='none' displayPrint='block'>
+         <Section
+          elements={elements}
+          className="educations"
+          title="Education"
+          print={true}
+          gridProps={{
+              direction: 'column',
+              spacing: 1
+          }}
+        />
+      </Box>
+      <Box displayPrint='none'>
+        <Section
+          elements={elements}
+          className="educations"
+          title="Education"
+          gridProps={{
+              direction: 'column',
+              spacing: 1
+          }}
+        />
+      </Box>
+    </>
   )
 }
 

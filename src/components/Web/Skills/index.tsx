@@ -55,13 +55,27 @@ const Skills = () => {
       spacing: 1
   }
   return (
-    <Section
-      elements={elements}
-      className="skills"
-      title="Skills &amp; Software"
-      asRow
-      gridProps={gridProps}
-    />
+    <>
+      <Box display='none' displayPrint='block'>
+        <Section
+          elements={elements}
+          className="skills"
+          title="Skills &amp; Software"
+          asRow
+          print={true}
+          gridProps={gridProps}
+        />
+      </Box>
+      <Box displayPrint='none'>
+        <Section
+          elements={elements}
+          className="skills"
+          title="Skills &amp; Buzz Words"
+          asRow
+          gridProps={gridProps}
+        />
+      </Box>
+    </>
   )
 }
 

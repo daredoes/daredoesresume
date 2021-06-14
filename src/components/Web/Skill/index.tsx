@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Chip from '@material-ui/core/Chip';
+import Typography from '@material-ui/core/Typography'
 
 
 type Frontmatter = {
@@ -20,18 +21,21 @@ type Props = {
 }
 
 const Skill: React.FunctionComponent<Props> = ({frontmatter, html}) => {
-    const { title, icon } = frontmatter;
+    const { title, icon, printable, visible } = frontmatter;
 
     return (
       <>
-        <Box displayPrint='block' display='none'>
-          <span className="dangerous-html dots" dangerouslySetInnerHTML={{ __html: title}}></span>
-        </Box>
-        <Box displayPrint='none'>
+      {printable && <Box display="none" displayPrint='block' className="dangerous-html">
+            <Typography style={{fontWeight: 'bolder'}} variant='caption' component='span'>
+                <FontAwesomeIcon icon={icon} fixedWidth />&nbsp; 
+            </Typography>
+            <Typography style={{fontWeight: 'bolder'}} variant='caption'>{title}</Typography> 
+        </Box>}
+        {visible && <Box displayPrint="none">
           <Grid item key={title}>
               <Chip variant='outlined' label={title} color='secondary' size='medium' icon={<FontAwesomeIcon icon={icon} />} />                 
           </Grid>
-        </Box>
+        </Box>}
       </>
     )
 }

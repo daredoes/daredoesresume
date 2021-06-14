@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Fab, NoSsr } from '@material-ui/core';
-import LightDarkContext from '@theme/LightDarkContext';
+import {useLightDark} from '@theme/LightDarkContext';
 
 import SunnyIcon from '@material-ui/icons/WbSunny';
 import NightIcon from '@material-ui/icons/Brightness3';
 
+
 function LightDarkFab(props) {
-    const { theme, changeTheme } = useContext(LightDarkContext);
-    
+    const { theme, changeTheme } = useLightDark();
 
 	return (
 		<NoSsr>

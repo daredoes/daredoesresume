@@ -9,6 +9,19 @@ import CardContent from '@material-ui/core/CardContent';
 
 import Link from '@components/Link'
 
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+    root: {
+      '@media print': {
+        boxShadow: 'none',
+        '& svg': {
+            display: 'none'
+        }
+      },
+    }
+}));
+
 type Frontmatter = {
     title: string,
     weight: number,
@@ -28,6 +41,7 @@ type Props = {
 
 const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
     const { title, display_date, name, external_url, printable, visible } = frontmatter;
+    const classes = useStyles()
 
     const LinkOrSpan = useMemo(() => {
         return external_url ? (
@@ -37,11 +51,12 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
               anchorSize="small"
               target="_blank"
               rel="noopener noreferrer"
+              className={classes.root}
             >
               {name}
             </Link>
           ) : (
-            <span className="title h4">&bull;&nbsp;{name}</span>
+            <span>&bull;&nbsp;{name}</span>
           )
     }, [external_url, name])
 
@@ -55,7 +70,7 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
                         <Grid container justify='space-between' alignItems='center'>
                             <Grid item>
                                 <Typography style={{fontWeight: 'bolder'}} variant='subtitle1'>
-                                    {name} - {title}
+                                    {LinkOrSpan} - {title}
                                 </Typography>
                             </Grid>
                             <Grid item>

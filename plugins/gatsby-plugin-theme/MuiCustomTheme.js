@@ -67,19 +67,42 @@ const myTheme = isDark => responsiveFontSizes(createMuiTheme({
                     height: '100%',
                     backgroundColor: isDark ? BLACK : WHITE,
 				},
-				'.print-only .dangerous-html li > p, .dangerous-html p': {
+				'.dangerous-html p': {
 						margin: 0
 				},
-				'.print-only .dangerous-html a': {
-					boxShadow: 'none'
+				'.print-only': {
+					display: 'none'
 				},
-				'.print-only .dangerous-html > ul > li': {
-					listStyleType: 'square',
-					listStylePosition: 'outside !important'
-				},
-				'.print-only .dangerous-html > ul': {
-					marginBlockStart: '0',
-					marginBlockEnd: '0',
+				'@media print': {
+					'.dangerous-html > ul > li': {
+						listStyleType: 'square',
+						listStylePosition: 'outside !important'
+					},
+					'.dangerous-html > ul': {
+						marginBlockStart: '0',
+						marginBlockEnd: '0',
+					},
+					'.no-print': {
+						display: 'none'
+					},
+					'.print-only': {
+						display: 'initial'
+					},
+					'.dangerous-html a': {
+						boxShadow: 'none'
+					},
+					// html: {
+					// 	backgroundColor: WHITE,
+					// },
+					// body: {
+					// 	backgroundColor: WHITE,
+					// },
+					// '#___gatsby': {
+					// 	backgroundColor: WHITE,
+					// },
+					// '#gatsby-focus-wrapper': {
+					// 	backgroundColor: WHITE,
+					// },
 				}
             },
 		},

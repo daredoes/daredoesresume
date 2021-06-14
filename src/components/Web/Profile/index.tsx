@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button'
 import PrintIcon from '@material-ui/icons/PrintOutlined'
 import { makeStyles } from '@material-ui/core/styles';
 
-import { openPrintDialog } from "@components/helpers"
+import { useLightDark } from '@theme/LightDarkContext'
 import '@src/scss/profile.scss'
 
 const useStyles = makeStyles(() => ({
@@ -18,6 +18,9 @@ const useStyles = makeStyles(() => ({
     },
     grid: {
         marginTop: '80px !important'
+    },
+    printGrid: {
+      marginBottom: '-8px'
     }
   }));
 
@@ -40,11 +43,12 @@ const Profile = () => {
 
   const frontmatter = data.markdownRemark.frontmatter
   const classes = useStyles()
+  const { print } = useLightDark()
   return (
     <>
       <Box displayPrint='block' display='none'>
         <Grid container spacing={1}>
-          <Grid item>
+          <Grid item className={classes.printGrid}>
             <Typography variant='h5'>{frontmatter.print_name}</Typography>
           </Grid>
         </Grid>
@@ -62,7 +66,7 @@ const Profile = () => {
                 <Typography>
                 <Button
                   variant='outlined'
-                  onClick={openPrintDialog}
+                  onClick={print}
                   startIcon={<PrintIcon/>}
               >
                   Print Resumé/CV PDF
