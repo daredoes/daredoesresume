@@ -10,7 +10,7 @@ const IndexPage = () => {
   return (
     <>
       <PrintIndex />
-      <Layout>
+      <Layout printButton={true}>
         <SEO title="Home" />
         <PublicIndex />
       </Layout>

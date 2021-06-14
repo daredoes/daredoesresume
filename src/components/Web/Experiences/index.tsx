@@ -47,7 +47,7 @@ const Experiences = () => {
           edge.node.frontmatter &&
           (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map(edge => (
-          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
+          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} xs={12} item key={edge.node.id}>
               <Experience {...edge.node} />
           </Grid>
       ))
@@ -64,8 +64,8 @@ const Experiences = () => {
           gridProps={{
               direction: 'column',
               spacing: 1,
-              alignItems: 'center',
-              justify: 'center'
+              alignItems: 'stretch',
+              justify: 'flex-start'
           }}
         />
       </Box>

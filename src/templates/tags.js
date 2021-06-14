@@ -1,10 +1,11 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/NewLayout"
+import Box from '@material-ui/core/Box'
 
 import Section from "../components/Section"
-import Project from "../components/Project"
+import Project from "../components/Web/Project"
 
 class TagRoute extends React.Component {
   render() {
@@ -22,17 +23,31 @@ class TagRoute extends React.Component {
     const tag = this.props.pageContext.tag
     const title = this.props.data.site.siteMetadata.title
     const totalCount = this.props.data.allMarkdownRemark.totalCount
-    const tagHeader = `${totalCount} post${
-      totalCount === 1 ? "" : "s"
-    } tagged with “${tag}”`
+    const tagHeader = (
+      <span>
+        {totalCount} post{
+          totalCount === 1 ? "" : "s"
+        } tagged with "{tag}" - <Link className="btn btn-primary w-100" to="/tags/">
+        Browse all tags
+      </Link>
+      </span>
+    )
 
     return (
-      <Layout className="print-safe">
-        <Section elements={children} title={tagHeader} />
-        <Helmet title={`${tag} | ${title}`} />
-        <Link className="btn btn-primary w-100" to="/tags/">
-          Browse all tags
-        </Link>
+      <Layout>
+        <Box p={1}>
+          <Section 
+            elements={children}
+            title={tagHeader}
+            withProgress={children.length > 1}
+            gridProps={{
+                direction: 'column',
+                spacing: 1,
+            }}
+          />
+          <Helmet title={`${tag} | ${title}`} />
+          
+        </Box>
       </Layout>
     )
   }

@@ -46,7 +46,7 @@ const Educations = () => {
           edge.node.frontmatter &&
           (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
       ).map(edge => (
-          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
+          <Grid xs={12} component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
               <Education {...edge.node} />
           </Grid>
       ))
@@ -61,6 +61,8 @@ const Educations = () => {
           print={true}
           gridProps={{
               direction: 'column',
+              alignItems: 'strech',
+              justify: 'flex-start',  
               spacing: 1
           }}
         />

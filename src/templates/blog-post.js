@@ -2,19 +2,24 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
+import Grid from '@material-ui/core/Grid'
 import Layout from "@components/NewLayout"
 import SEO from "@components/SEO"
-import Project from "@components/Project"
+import Project from "@components/Web/Project"
 // import Content, { HTMLContent } from '../components/Content'
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post, site } = data
   const { title, date } = post.frontmatter
   return (
-    <Layout className="print-safe">
+    <Layout printButton print>
       <SEO title={title} />
       <Helmet title={`${title} | ${site.siteMetadata.title}`} />
-      <Project nonLinkTitle={true} key={post.id} {...post} />
+      <Grid container spacing={1}>
+        <Grid item>
+          <Project nonLinkTitle={true} key={post.id} {...post} />
+        </Grid>
+      </Grid>
     </Layout>
   )
 }

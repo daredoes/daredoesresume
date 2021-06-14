@@ -3,6 +3,7 @@ import { kebabCase } from "lodash"
 
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
+import Typography from '@material-ui/core/Typography';
 import TagIcon from '@material-ui/icons/Label'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -38,7 +39,7 @@ const Project: React.FunctionComponent<Props> = ({frontmatter, html, fields, exc
 
     const LinkOrSpan = useMemo(() => {
         return nonLinkTitle ? (
-            <span>{title}</span>
+            title
           ) : (
             <Link
               to={slug}
@@ -71,37 +72,32 @@ const Project: React.FunctionComponent<Props> = ({frontmatter, html, fields, exc
     return nonLinkTitle ? (
         <Section
         elements={
-          <div className="one-part-card">
-            <div className="card-body">
-              {description && (
-                <div className="card-text dangerous-html">{description}</div>
-              )}
-              {description && <hr />}
-              <div
-                className="dangerous-html card-text"
-                dangerouslySetInnerHTML={{ __html: html }}
-              ></div>
-              <Section
-                elements={tagElements}
-                className="tags"
-                normalHeader
-                asRow
-                title="Tags"
-                gridProps={gridProps}
-              />
-              <br/>
-            </div>
-          </div>
+          <Card variant='outlined'>
+            <CardHeader
+            subheader={date}
+            subheaderTypographyProps={{ variant: 'h6'}}
+            title={(
+            <>
+            {LinkOrSpan}
+            </>)}
+            titleTypographyProps={{ variant: 'h5'}}
+            style={{padding: '8px 16px'}}
+            />
+            <CardContent style={{paddingTop: '0', paddingBottom: '4px'}}>
+                <div dangerouslySetInnerHTML={{ __html: html }}/>
+                <Section
+                    elements={tagElements}
+                    className="tags"
+                    normalHeader
+                    asRow
+                    gridProps={gridProps}
+                    title="Tags"
+                />
+            </CardContent>
+        </Card>
         }
         className="project"
-        title={
-          <span>
-            {LinkOrSpan}
-            <wbr /> • 
-            <wbr />
-            {date}
-          </span>
-        }
+        title={`${LinkOrSpan} • ${date}`}
       />
     ) : (
         <Card variant='outlined'>

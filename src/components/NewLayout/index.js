@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Layout = ({ children, print }) => {
+const Layout = ({ children, print, printButton }) => {
 
   const classes = useStyles()
     
@@ -55,7 +55,7 @@ const Layout = ({ children, print }) => {
       `}
       render={data => (
         <Box displayPrint={print ? 'block' : 'none'}>
-          <Grid className={classes.root} alignItems='center' container wrap={'nowrap'} justify='space-between' direction='column'>
+          <Grid className={classes.root} alignItems='stretch' container wrap={'nowrap'} justify='space-between' direction='column'>
               <Grid item xs={12}>
                   <Header siteTitle={data.site.siteMetadata.title} />
               </Grid>
@@ -63,7 +63,7 @@ const Layout = ({ children, print }) => {
                   <main>{children}</main>
               </Grid>
               <Grid item xs={12}>
-                <Footer printablePage={true} />
+                <Footer printButton={printButton} printablePage={true} />
               </Grid>
               <Fab key="darkMode" />
           </Grid>
