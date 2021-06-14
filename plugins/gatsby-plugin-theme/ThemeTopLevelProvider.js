@@ -7,12 +7,16 @@ function ThemeTopLevelProvider({ children, initTheme }) {
 	const [mode, setMode] = useState(initTheme);
 
 	const switchToLightForPrint = useCallback(async (e) => {
-		const after = e.type === 'afterprint'
-		setTheme(after, true)
-		if (!after) {
-			//e.preventDefault()
+		const isDark = e.type === 'afterprint'
+		const val = isDark ? 'dark' : 'light';
+		localStorage.setItem('theme', val);
+		if (isDark) {
+			addListeners()
+		} else {
+			removeListeners()
 		}
-	}, [setTheme])
+		setMode(val);
+	}, [setMode])
 
 	const removeListeners = useCallback(async () => {
 		if (typeof window !== 'undefined') {
@@ -28,15 +32,13 @@ function ThemeTopLevelProvider({ children, initTheme }) {
 		}
 	}, [switchToLightForPrint])
 
-	const setTheme = useCallback((isDark, print) => {
+	const setTheme = useCallback((isDark) => {
 		const val = isDark ? 'dark' : 'light';
 		localStorage.setItem('theme', val);
-		if (!print) {
-			if (isDark) {
-				addListeners()
-			} else {
-				removeListeners()
-			}
+		if (isDark) {
+			addListeners()
+		} else {
+			removeListeners()
 		}
 		setMode(val);
 	}, [setMode, addListeners, removeListeners]);
@@ -49,7 +51,7 @@ function ThemeTopLevelProvider({ children, initTheme }) {
 				setTheme(true, true)
 			}, 100)
 		}
-	}, [])
+	}, [setTheme])
 
 	useEffect(() => {
 		if (initTheme === 'dark') {
