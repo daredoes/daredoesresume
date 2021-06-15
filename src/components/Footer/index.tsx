@@ -14,10 +14,10 @@ interface Props {
 const Footer: React.FunctionComponent<Props> = ({ children, printButton }) => {
     const { print } = useLightDark()
     return (
-        <footer className="no-print">
+        <footer>
             <Box p={printButton ? 0 : 1}>
                 <Grid container direction='column' justify='space-between' alignItems='center'>
-                    {printButton && (<Grid item>
+                    {printButton && (<Grid component={Box} displayPrint='none' item>
                         <IconButton color='secondary' title='Print A Formatted Resumé' onClick={print}>
                             <PrintIcon />
                         </IconButton>

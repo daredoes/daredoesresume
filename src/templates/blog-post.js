@@ -2,11 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
-import Grid from '@material-ui/core/Grid'
+import Grid from "@material-ui/core/Grid"
 import Layout from "@components/NewLayout"
 import SEO from "@components/SEO"
 import Project from "@components/Web/Project"
-// import Content, { HTMLContent } from '../components/Content'
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post, site } = data

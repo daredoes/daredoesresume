@@ -1,8 +1,6 @@
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
-import LinkIcon from '@material-ui/icons/Link'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
+import LinkIcon from "@material-ui/icons/Link"
 // Since DOM elements <a> cannot receive activeClassName,
 // destructure the prop here and pass it only to GatsbyLink
 const Link = ({
@@ -18,9 +16,7 @@ const Link = ({
   // will start with exactly one slash, and that anything else is external.
   const internal = /^\/(?!\/)/.test(to)
 
-  const anchor = anchorTag ? (
-    <LinkIcon fontSize={anchorSize} />
-  ) : null
+  const anchor = anchorTag ? <LinkIcon fontSize={anchorSize} /> : null
 
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
