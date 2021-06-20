@@ -61,7 +61,7 @@ const Educations = () => {
           print={true}
           gridProps={{
               direction: 'column',
-              alignItems: 'strech',
+              alignItems: 'stretch',
               justify: 'flex-start',  
               spacing: 1
           }}

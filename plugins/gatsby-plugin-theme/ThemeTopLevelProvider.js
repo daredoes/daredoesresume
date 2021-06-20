@@ -1,79 +1,89 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import MuiCustomTheme from './MuiCustomTheme';
-import { LightDarkProvider } from './LightDarkContext';
+import React, { useState, useCallback, useEffect } from "react"
+import PropTypes from "prop-types"
+import MuiCustomTheme from "./MuiCustomTheme"
+import { LightDarkProvider } from "./LightDarkContext"
+
+const EVENT_OPTIONS = {
+  capture: true,
+  once: true,
+}
 
 function ThemeTopLevelProvider({ children, initTheme }) {
-	const [mode, setMode] = useState(initTheme);
+  const [mode, setMode] = useState(initTheme)
 
-	const switchToLightForPrint = useCallback(async (e) => {
-		const isDark = e.type === 'afterprint'
-		const val = isDark ? 'dark' : 'light';
-		localStorage.setItem('theme', val);
-		if (isDark) {
-			addListeners()
-		} else {
-			removeListeners()
-		}
-		setMode(val);
-	}, [setMode])
+  const setTheme = useCallback(
+    (isDark) => {
+      const val = isDark ? "dark" : "light"
+      setMode(val)
+    },
+    [setMode, mode]
+  )
 
-	const removeListeners = useCallback(async () => {
-		if (typeof window !== 'undefined') {
-			window.removeEventListener("beforeprint", switchToLightForPrint);
-			window.removeEventListener("afterprint", switchToLightForPrint);
-		}
-	}, [switchToLightForPrint])
+  const switchToLightForPrint = useCallback(
+    async (e) => {
+      const isDark = e.type === "afterprint"
+      setTheme(isDark)
+    },
+    [setTheme]
+  )
 
-	const addListeners = useCallback(async () => {
-		if (typeof window !== 'undefined') {
-			window.addEventListener("beforeprint", switchToLightForPrint);
-			window.addEventListener("afterprint", switchToLightForPrint);
-		}
-	}, [switchToLightForPrint])
+  const removeListeners = useCallback(async () => {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("afterprint", switchToLightForPrint)
+      window.removeEventListener("beforeprint", switchToLightForPrint)
+    }
+  }, [switchToLightForPrint])
 
-	const setTheme = useCallback((isDark) => {
-		const val = isDark ? 'dark' : 'light';
-		localStorage.setItem('theme', val);
-		if (isDark) {
-			addListeners()
-		} else {
-			removeListeners()
-		}
-		setMode(val);
-	}, [setMode, addListeners, removeListeners]);
+  const addListeners = useCallback(async () => {
+    if (typeof window !== "undefined") {
+      window.addEventListener(
+        "afterprint",
+        switchToLightForPrint,
+        EVENT_OPTIONS
+      )
+      window.addEventListener(
+        "beforeprint",
+        switchToLightForPrint,
+        EVENT_OPTIONS
+      )
+    }
+  }, [switchToLightForPrint])
 
-	const print = useCallback(() => {
-		if (typeof window !== 'undefined') {
-			setTheme(false, true)
-			setTimeout(() => {
-				window.print()
-				setTheme(true, true)
-			}, 100)
-		}
-	}, [setTheme])
+  const print = useCallback(() => {
+    if (typeof window !== "undefined") {
+      if (mode === "dark") {
+        setTheme(false)
+        setTimeout(() => {
+          window.print()
+          setTheme(true)
+        }, 50)
+      } else {
+        window.print()
+      }
+    }
+  }, [setTheme, mode])
 
-	useEffect(() => {
-		if (initTheme === 'dark') {
-			addListeners()
-		}
-	}, [])
+  useEffect(() => {
+    localStorage.setItem("theme", mode)
+    if (mode === "dark") {
+      addListeners()
+    } else {
+      removeListeners()
+    }
+  }, [mode])
 
-	return (
-		<MuiCustomTheme darkMode={mode === 'dark'}>
-			<LightDarkProvider theme={mode}
-				changeTheme={setTheme}
-				print={print}
-			>
-				{children}
-			</LightDarkProvider>
-		</MuiCustomTheme>
-	);
+  return (
+    <MuiCustomTheme darkMode={mode === "dark"}>
+      <LightDarkProvider theme={mode} changeTheme={setTheme} print={print}>
+        {children}
+      </LightDarkProvider>
+    </MuiCustomTheme>
+  )
 }
 
 ThemeTopLevelProvider.propTypes = {
-	children: PropTypes.node,
-	initTheme: PropTypes.string.isRequired
-};
+  children: PropTypes.node,
+  initTheme: PropTypes.string.isRequired,
+}
 
-export default ThemeTopLevelProvider;
+export default ThemeTopLevelProvider
