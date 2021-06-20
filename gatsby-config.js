@@ -16,18 +16,15 @@ module.exports = {
           "@components": "src/components",
           "@layouts": "src/layouts",
           "@theme": "plugins/gatsby-plugin-theme",
-          "@pages": "src/pages"
+          "@pages": "src/pages",
         },
-        extensions: [
-          "js",
-        ],
-      }
+        extensions: ["js"],
+      },
     },
     {
       resolve: `gatsby-plugin-sass`,
       options: {
         useResolveUrlLoader: true,
-        precision: 6,
       },
     },
     {
@@ -44,6 +41,8 @@ module.exports = {
         name: "pages",
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: "gatsby-transformer-remark",
@@ -52,7 +51,9 @@ module.exports = {
           {
             resolve: "gatsby-remark-relative-images",
             options: {
-              name: "uploads",
+              // [Optional] The root of "media_folder" in your config.yml
+              // Defaults to "static"
+              staticFolderName: "src",
             },
           },
           {
@@ -73,23 +74,22 @@ module.exports = {
           {
             resolve: "gatsby-remark-embed-youtube",
           },
-          {
-            resolve: "gatsby-remark-custom-blocks",
-            options: {
-              blocks: {
-                print: {
-                  classes: "print-only",
-                },
-                noprint: {
-                  classes: "no-print",
-                },
-              },
-            },
-          },
+          // {
+          //   resolve: "gatsby-remark-custom-blocks",
+          //   options: {
+          //     blocks: {
+          //       print: {
+          //         classes: "print-only",
+          //       },
+          //       noprint: {
+          //         classes: "no-print",
+          //       },
+          //     },
+          //   },
+          // },
         ],
       },
     },
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
