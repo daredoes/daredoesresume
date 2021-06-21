@@ -1,9 +1,8 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Grid from '@material-ui/core/Grid'
 
-import Section from "@components/Section"
 import Hobby from "@components/Web/Hobby"
+import Elements from '@components/Web/Elements'
 
 const Hobbies = () => {
   const data = useStaticQuery(graphql`
@@ -30,18 +29,6 @@ const Hobbies = () => {
   }
   `)
 
-  
-  const elements = useMemo(() => {
-      return data.hobbies.edges.filter(
-        edge =>
-          edge.node.frontmatter && edge.node.frontmatter.visible
-      ).map(edge => (
-          <Grid item key={edge.node.id}>
-              <Hobby {...edge.node} />
-          </Grid>
-      ))
-  }, [data])
-
   const gridProps = {
       direction: 'row',
       justify: 'flex-start',
@@ -49,12 +36,17 @@ const Hobbies = () => {
       spacing: 1
   }
   return (
-    <Section
-      elements={elements}
-      className="hobbies"
-      title="Hobbies"
-      asRow
-      gridProps={gridProps}
+    <Elements
+     component={Hobby} 
+     data={data.hobbies} 
+     printedSectionProps={{
+       title: "Hobbies",
+       gridProps: gridProps
+     }}
+     sectionProps={{
+       gridProps: gridProps,
+        title: 'Hobbies'
+     }}
     />
   )
 }

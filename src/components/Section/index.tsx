@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react"
-import Grid from '@material-ui/core/Grid'
+import Grid, {GridProps} from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -15,7 +15,17 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Section = ({elements, title, withProgress, normalHeader, sectionHeaderClassName, print, gridProps}) => {
+export interface SectionProps {
+    elements: React.FC<any>[],
+    title?: string,
+    withProgress?: boolean | ((number) => boolean),
+    normalHeader?: boolean,
+    className?: string,
+    print?: boolean,
+    gridProps?: GridProps
+}
+
+const Section: React.FC<SectionProps> = ({elements, title, withProgress, normalHeader, className, print, gridProps}) => {
     const classes = useStyles()
 
     const [active, setActive] = useState(0)
@@ -70,33 +80,38 @@ const Section = ({elements, title, withProgress, normalHeader, sectionHeaderClas
         !(title === undefined || title === null)
     }, [title])
 
+    const useProgress = useMemo(() => {
+        if (!withProgress) return false
+        if (typeof withProgress === 'boolean') return withProgress
+        console.log(typeof withProgress, elements.length)
+        return withProgress(elements.length)
+    }, [withProgress, elements.length])
+
     const header = useMemo(() => {
         if (title === undefined || title === null) {
             return null
         }
         if (normalHeader) {
-            return (<Typography variant='h5' className={sectionHeaderClassName}>{title}</Typography>)
+            return (<Typography variant='h5' className={className}>{title}</Typography>)
         }
         return (
             <SectionHeader
-            className={sectionHeaderClassName}
+            className={className}
             title={title}
             print={print}
             >
-            {!print && withProgress && progressBar}
+            {!print && useProgress && progressBar}
             </SectionHeader>
         )
-    }, [hasTitle, normalHeader, sectionHeaderClassName, title, print, withProgress, progressBar])
+    }, [hasTitle, normalHeader, className, title, print, useProgress, progressBar])
     return (
         <div>
             {header}
-            <Grid container {...gridProps}>
-            {!print && withProgress ? elements[active] : elements}
+            <Grid container id={`grid${title}`} {...gridProps}>
+            {!print && useProgress ? elements[active] : elements}
             </Grid>
         </div>
     )
-    
-
 }
 
 export default Section

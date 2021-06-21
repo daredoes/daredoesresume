@@ -1,10 +1,7 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Box from '@material-ui/core/Box'
-import Grid from '@material-ui/core/Grid'
-
-import Section from "@components/Section"
 import Education from "@components/Web/Education"
+import Elements from '@components/Web/Elements'
 
 const Educations = () => {
   const data = useStaticQuery(graphql`
@@ -39,46 +36,29 @@ const Educations = () => {
     }
   `)
 
-  
-  const elements = useMemo(() => {
-      return data.educations.edges.filter(
-        edge =>
-          edge.node.frontmatter &&
-          (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
-      ).map(edge => (
-          <Grid xs={12} component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
-              <Education {...edge.node} />
-          </Grid>
-      ))
-  }, [data])
   return (
-    <>
-      <Box display='none' displayPrint='block'>
-         <Section
-          elements={elements}
-          className="educations"
-          title="Education"
-          print={true}
-          gridProps={{
-              direction: 'column',
-              alignItems: 'stretch',
-              justify: 'flex-start',  
-              spacing: 1
-          }}
-        />
-      </Box>
-      <Box displayPrint='none'>
-        <Section
-          elements={elements}
-          className="educations"
-          title="Education"
-          gridProps={{
+    <Elements
+     gridProps={{xs: 12}}
+     component={Education} 
+     data={data.educations} 
+     printedSectionProps={{
+       title: "Education",
+       gridProps: {
+        direction: 'column',
+        alignItems: 'stretch',
+        justify: 'flex-start',  
+        spacing: 1
+       }
+     }}
+     sectionProps={{
+       gridProps: {
               direction: 'column',
               spacing: 1
-          }}
-        />
-      </Box>
-    </>
+        },
+        title: 'Education'
+     }}
+
+    />
   )
 }
 

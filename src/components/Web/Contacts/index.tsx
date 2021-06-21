@@ -1,10 +1,8 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Box from '@material-ui/core/Box'
-import Grid from '@material-ui/core/Grid'
 
-import Section from "@components/Section"
 import Contact from "@components/Web/Contact"
+import Elements from "@components/Web/Elements"
 
 const Contacts = () => {
   const data = useStaticQuery(graphql`
@@ -33,43 +31,26 @@ const Contacts = () => {
     }
   `)
   
-  const elements = useMemo(() => {
-      return data.contacts.edges.filter(
-        edge =>
-          edge.node.frontmatter &&
-          (edge.node.frontmatter.printable || edge.node.frontmatter.visible)
-      ).map((edge, index) => (
-          <Grid component={Box} display={edge.node.frontmatter.visible ? 'block' : 'none'} displayPrint={edge.node.frontmatter.printable ? 'block' : 'none'} item key={edge.node.id}>
-              <Contact index={index} {...edge.node} />
-          </Grid>
-      ))
-  }, [data])
   return (
-    <>
-      <Box display='none' displayPrint='block'>
-        <Section
-          elements={elements}
-          className="contacts"
-          print={true}
-          asRow={true}
-          gridProps={{
-              direction: 'row',
-              spacing: 1
-          }}
-        />
-      </Box>
-      <Box displayPrint='none'>
-        <Section
-          elements={elements}
-          className="contacts"
-          title={`Contact`}
-          gridProps={{
+    <Elements
+     component={Contact} 
+     data={data.contacts} 
+     printedSectionProps={{
+       gridProps: {
+        direction: 'row',
+        spacing: 1
+    },
+    asRow: true
+     }}
+     sectionProps={{
+       gridProps: {
               direction: 'column',
               spacing: 1
-          }}
-        />
-      </Box>
-    </>
+        },
+        title: 'Contact'
+     }}
+
+    />
   )
 }
 
