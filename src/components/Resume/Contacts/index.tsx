@@ -1,8 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Contact from "@components/Web/Contact"
-import Elements from "@components/Web/Elements"
+import Contact from "@components/Resume/Contact"
+import Elements from "@components/Resume/Elements"
 
 const Contacts = () => {
   const data = useStaticQuery(graphql`

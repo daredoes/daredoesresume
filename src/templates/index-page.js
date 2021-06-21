@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import Layout from "@components/NewLayout"
+import Layout from "@components/Layout"
 import SEO from "@components/SEO"
 import PublicIndex from "@components/public-index"
 import PrintIndex from "@components/print-index"

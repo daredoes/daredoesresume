@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Education from "@components/Web/Education"
-import Elements from '@components/Web/Elements'
+import Education from "@components/Resume/Education"
+import Elements from '@components/Resume/Elements'
 
 const Educations = () => {
   const data = useStaticQuery(graphql`

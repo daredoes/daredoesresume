@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Skill from "@components/Web/Skill"
-import Elements from '@components/Web/Elements'
+import Skill from "@components/Resume/Skill"
+import Elements from '@components/Resume/Elements'
 
 const Skills = () => {
 
@@ -44,12 +44,12 @@ const Skills = () => {
      component={Skill} 
      data={data.skills} 
      printedSectionProps={{
-       title: "Skills &amp; Software",
+       title: "Skills & Software",
        gridProps: gridProps
      }}
      sectionProps={{
        gridProps: gridProps,
-        title: "Skills &amp; Buzz Words"
+        title: "Skills & Buzz Words"
      }}
     />
   )

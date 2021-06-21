@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Grid from "@material-ui/core/Grid"
-import Layout from "@components/NewLayout"
+import Layout from "@components/Layout"
 import SEO from "@components/SEO"
-import Project from "@components/Web/Project"
+import Project from "@components/Resume/Project"
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post, site } = data

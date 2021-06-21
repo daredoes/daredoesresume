@@ -1,8 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Project from "@components/Web/Project"
-import Elements from '@components/Web/Elements'
+import Project from "@components/Resume/Project"
+import Elements from '@components/Resume/Elements'
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
@@ -41,7 +41,7 @@ const Projects = () => {
      component={Project} 
      data={data.projects} 
      printedSectionProps={{
-       title: "Projects &amp; Blog Posts",
+       title: "Projects & Blog Posts",
        gridProps: {
         direction: 'column',
         spacing: 1,
@@ -59,7 +59,7 @@ const Projects = () => {
     withProgress: (x) => {
       return x > 2
     },
-        title: "Projects &amp; Blog Posts"
+        title: "Projects & Blog Posts"
      }}
     />
   )

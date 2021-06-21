@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import Box from '@material-ui/core/Box'
 
 import Section from "@components/Section"
-import Experience from "@components/Web/Experience"
-import Elements from "@components/Web/Elements"
+import Experience from "@components/Resume/Experience"
+import Elements from "@components/Resume/Elements"
 
 const Experiences = () => {
   const data = useStaticQuery(graphql`
