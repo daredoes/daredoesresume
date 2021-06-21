@@ -16,12 +16,12 @@ interface Props {
 const Footer: React.FunctionComponent<Props> = ({ children, printButton }) => {
 
     const data = useStaticQuery(graphql`
-    query {
-      site {
-          buildTime
-      }
-    }
-  `)
+        query {
+            site {
+                buildTime
+            }
+        }
+    `)
 
     const buildDate = React.useMemo(() => {
         if (!data) return 'Unknown';
