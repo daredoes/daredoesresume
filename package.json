@@ -46,6 +46,7 @@
     "react-fontawesome": "^1.7.1",
     "react-helmet": "^6.1.0",
     "resolve-url-loader": "^4.0.0",
+    "tiny-relative-date": "^1.3.0",
     "use-detect-print": "^0.0.2"
   },
   "devDependencies": {

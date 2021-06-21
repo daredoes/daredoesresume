@@ -12,7 +12,7 @@ function ThemeTopLevelProvider({ children, initTheme }) {
   const [mode, setMode] = useState(initTheme)
 
   const setTheme = useCallback(
-    (isDark) => {
+    async (isDark) => {
       const val = isDark ? "dark" : "light"
       setMode(val)
     },
@@ -49,7 +49,7 @@ function ThemeTopLevelProvider({ children, initTheme }) {
     }
   }, [switchToLightForPrint])
 
-  const print = useCallback(() => {
+  const print = useCallback(async () => {
     if (typeof window !== "undefined") {
       if (mode === "dark") {
         setTheme(false)

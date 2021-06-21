@@ -1,10 +1,12 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import PrintIcon from '@material-ui/icons/Print'
 
+import relativeDate from "tiny-relative-date"
 import { useLightDark } from '@theme/LightDarkContext'
 
 interface Props {
@@ -12,6 +14,19 @@ interface Props {
 }
 
 const Footer: React.FunctionComponent<Props> = ({ children, printButton }) => {
+
+    const data = useStaticQuery(graphql`
+    query {
+      site {
+          buildTime
+      }
+    }
+  `)
+
+    const buildDate = React.useMemo(() => {
+        if (!data) return 'Unknown';
+        return relativeDate(data.site.buildTime)
+    }, [data])
     const { print } = useLightDark()
     return (
         <footer>
@@ -24,8 +39,8 @@ const Footer: React.FunctionComponent<Props> = ({ children, printButton }) => {
                     </Grid>)}
                     {children}
                     <Grid item>
-                        <Typography>
-                            Last Updated: Now
+                        <Typography style={{textTransform: 'capitalize'}}>
+                            Last Updated: {buildDate}
                         </Typography>
                     </Grid>
                 </Grid>
