@@ -13,6 +13,14 @@ interface Props {
     printButton?: Boolean
 }
 
+interface Site {
+    buildTime?: string
+}
+
+interface Query {
+    site?: Site
+}
+
 const Footer: React.FunctionComponent<Props> = ({ children, printButton }) => {
 
     const data = useStaticQuery(graphql`
@@ -21,12 +29,12 @@ const Footer: React.FunctionComponent<Props> = ({ children, printButton }) => {
                 buildTime
             }
         }
-    `)
+    `) as Query
 
     const buildDate = React.useMemo(() => {
-        if (!data) return 'Unknown';
+        if (!data?.site?.buildTime) return 'Unknown';
         return relativeDate(data.site.buildTime)
-    }, [data])
+    }, [data.site.buildTime])
     const { print } = useLightDark()
     return (
         <footer>
