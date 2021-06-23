@@ -90,7 +90,7 @@ const Header = ({ siteTitle }) => {
           <Grid
             container
             spacing={2}
-            justify="flex-start"
+            justify="center"
             alignContent="center"
             alignItems="center"
           >
