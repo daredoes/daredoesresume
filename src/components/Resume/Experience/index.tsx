@@ -47,7 +47,7 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
         return external_url ? (
             <Link
               to={external_url}
-              anchorTag={true}
+              anchorTag={!printable}
               anchorSize="small"
               target="_blank"
               rel="noopener noreferrer"
@@ -58,7 +58,7 @@ const Experience: React.FunctionComponent<Props> = ({frontmatter, html}) => {
           ) : (
             <span>&bull;&nbsp;{name}</span>
           )
-    }, [external_url, name])
+    }, [external_url, name, printable])
 
 
     return (

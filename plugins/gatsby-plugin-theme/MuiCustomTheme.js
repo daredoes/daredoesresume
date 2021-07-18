@@ -29,16 +29,19 @@ const mySans = `"Montserrat", "Source Sans Pro", sans-serif`
 const BLACK = "#000000"
 const WHITE = "#ffffff"
 
-const myTheme = (isDark) =>
-  responsiveFontSizes(
+const myTheme = (isDark) => {
+  const isDarkSoBlack = isDark ? BLACK : WHITE
+  const isDarkSoWhite = isDark ? WHITE : BLACK
+
+  return responsiveFontSizes(
     createMuiTheme({
       palette: {
         type: isDark ? "dark" : "light",
         primary: {
-          main: isDark ? BLACK : WHITE,
+          main: isDarkSoBlack,
         },
         secondary: {
-          main: isDark ? WHITE : BLACK,
+          main: isDarkSoWhite,
         },
       },
       typography: {
@@ -64,19 +67,19 @@ const myTheme = (isDark) =>
           "@global": {
             html: {
               height: "100%",
-              backgroundColor: isDark ? BLACK : WHITE,
+              backgroundColor: isDarkSoBlack,
             },
             body: {
               height: "100%",
-              backgroundColor: isDark ? BLACK : WHITE,
+              backgroundColor: isDarkSoBlack,
             },
             "#___gatsby": {
               height: "100%",
-              backgroundColor: isDark ? BLACK : WHITE,
+              backgroundColor: isDarkSoBlack,
             },
             "#gatsby-focus-wrapper": {
               height: "100%",
-              backgroundColor: isDark ? BLACK : WHITE,
+              backgroundColor: isDarkSoBlack,
             },
             ".dangerous-html p": {
               margin: 0,
@@ -114,6 +117,7 @@ const myTheme = (isDark) =>
       },
     })
   )
+}
 
 // TODO: The style is changing, but something above it is more important and static
 const GlobalStyles = withStyles((theme) => {

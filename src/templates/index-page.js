@@ -9,11 +9,11 @@ import PrintIndex from "@components/print-index"
 const IndexPage = () => {
   return (
     <>
-      <PrintIndex />
       <Layout printButton={true}>
         <SEO title="Home" />
         <PublicIndex />
       </Layout>
+      <PrintIndex />
     </>
   )
 }
