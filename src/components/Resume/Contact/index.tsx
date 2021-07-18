@@ -38,7 +38,7 @@ const Contact = ({frontmatter, html, index}: Props) => {
         <>
         {printable && <Box display="none" displayPrint='block' className="dangerous-html">
             <Typography style={{fontWeight: 'bolder'}} variant='caption' component='span'>
-                <FontAwesomeIcon icon={icon} fixedWidth />&nbsp; 
+                <FontAwesomeIcon size='sm' icon={icon} fixedWidth />&nbsp; 
             </Typography>
             <Typography style={{fontWeight: 'bolder'}} variant='caption' component={'a'} href={external_url}>{printableUrl}</Typography> 
         </Box>}
@@ -50,7 +50,7 @@ const Contact = ({frontmatter, html, index}: Props) => {
                     <Avatar aria-label="recipe">
                         <a href={external_url} target="_blank" rel="noopener noreferrer">
                             <IconButton color='secondary'>
-                                <FontAwesomeIcon icon={icon} fixedWidth />    
+                                <FontAwesomeIcon size='lg' icon={icon} fixedWidth />    
                             </IconButton>
                         </a>
                     </Avatar>

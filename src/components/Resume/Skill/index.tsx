@@ -27,13 +27,13 @@ const Skill: React.FunctionComponent<Props> = ({frontmatter, html}) => {
       <>
       {printable && <Box display="none" displayPrint='block' className="dangerous-html">
             <Typography style={{fontWeight: 'bolder'}} variant='caption' component='span'>
-                <FontAwesomeIcon icon={icon} fixedWidth />&nbsp; 
+                <FontAwesomeIcon size='sm' icon={icon} fixedWidth />&nbsp; 
             </Typography>
             <Typography style={{fontWeight: 'bolder'}} variant='caption'>{title}</Typography> 
         </Box>}
         {visible && <Box displayPrint="none">
           <Grid item key={title}>
-              <Chip variant='outlined' label={title} color='secondary' size='medium' icon={<FontAwesomeIcon icon={icon} />} />                 
+              <Chip variant='outlined' label={title} color='secondary' size='medium' icon={<FontAwesomeIcon size='sm' icon={icon} />} />                 
           </Grid>
         </Box>}
       </>
