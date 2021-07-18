@@ -10,6 +10,8 @@ import Experiences from "./Resume/Experiences"
 import Educations from "./Resume/Educations"
 import Skills from "./Resume/Skills"
 
+import { useLightDark } from "@theme/LightDarkContext"
+
 import "../scss/resume.scss"
 
 const PrintIndex = () => {
@@ -33,14 +35,18 @@ const PrintIndex = () => {
     return `${month}-${day}-${year}`
   }, [data.site.buildTime])
 
+  const { printMode } = useLightDark()
+
   return (
     <Box className="print-only" display="none" displayPrint="block">
-      <SEO
-        title={`${buildDate}_Resumé${
-          data ? `_${data.site.siteMetadata.author}` : ""
-        }`}
-        titleTemplate={"%s"}
-      />
+      {printMode && (
+        <SEO
+          title={`${buildDate}_Resumé${
+            data ? `_${data.site.siteMetadata.author}` : ""
+          }`}
+          titleTemplate={"%s"}
+        />
+      )}
       <Profile />
       <Contacts />
       <Experiences />

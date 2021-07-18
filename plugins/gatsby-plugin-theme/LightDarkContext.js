@@ -4,15 +4,17 @@ import React, { createContext, useContext } from "react"
 const LightDarkContext = createContext({
   theme: "dark",
   print: () => null,
+  printMode: false,
   changeTheme: () => null,
 })
 
-function LightDarkProvider({ children, print, theme, changeTheme }) {
+function LightDarkProvider({ children, print, printMode, theme, changeTheme }) {
   return (
     <LightDarkContext.Provider
       value={{
         theme: theme,
         print: print,
+        printMode: printMode,
         changeTheme: changeTheme,
       }}
     >
