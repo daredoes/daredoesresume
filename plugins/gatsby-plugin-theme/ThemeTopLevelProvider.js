@@ -3,13 +3,10 @@ import PropTypes from "prop-types"
 import MuiCustomTheme from "./MuiCustomTheme"
 import { LightDarkProvider } from "./LightDarkContext"
 
-const EVENT_OPTIONS = {
-  capture: true,
-  once: true,
-}
-
 function ThemeTopLevelProvider({ children, initTheme }) {
   const [mode, setMode] = useState(initTheme)
+  const [printMode, setPrintMode] = useState(false)
+  const [printModeRendered, setPrintModeRendered] = useState(false)
 
   const setTheme = useCallback(
     async (isDark) => {
@@ -19,62 +16,33 @@ function ThemeTopLevelProvider({ children, initTheme }) {
     [setMode, mode]
   )
 
-  const switchToLightForPrint = useCallback(
-    async (e) => {
-      const isDark = e.type === "afterprint"
-      setTheme(isDark)
-    },
-    [setTheme]
-  )
-
-  const removeListeners = useCallback(async () => {
-    if (typeof window !== "undefined") {
-      window.removeEventListener("afterprint", switchToLightForPrint)
-      window.removeEventListener("beforeprint", switchToLightForPrint)
+  const altPrint = useCallback(() => {
+    if (typeof window !== "undefined" && !printMode) {
+      setPrintMode(true)
     }
-  }, [switchToLightForPrint])
-
-  const addListeners = useCallback(async () => {
-    if (typeof window !== "undefined") {
-      window.addEventListener(
-        "afterprint",
-        switchToLightForPrint,
-        EVENT_OPTIONS
-      )
-      window.addEventListener(
-        "beforeprint",
-        switchToLightForPrint,
-        EVENT_OPTIONS
-      )
-    }
-  }, [switchToLightForPrint])
-
-  const print = useCallback(async () => {
-    if (typeof window !== "undefined") {
-      if (mode === "dark") {
-        setTheme(false)
-        setTimeout(() => {
-          window.print()
-          setTheme(true)
-        }, 50)
-      } else {
-        window.print()
-      }
-    }
-  }, [setTheme, mode])
+  }, [setPrintMode, printMode])
 
   useEffect(() => {
-    localStorage.setItem("theme", mode)
-    if (mode === "dark") {
-      addListeners()
-    } else {
-      removeListeners()
+    if (printMode) {
+      setPrintModeRendered(true)
     }
-  }, [mode])
+  }, [printMode, setPrintModeRendered])
+
+  useEffect(() => {
+    if (printModeRendered) {
+      window.print()
+      setPrintMode(false)
+      setPrintModeRendered(false)
+    }
+  }, [printModeRendered, setPrintMode, setPrintModeRendered])
 
   return (
-    <MuiCustomTheme darkMode={mode === "dark"}>
-      <LightDarkProvider theme={mode} changeTheme={setTheme} print={print}>
+    <MuiCustomTheme darkMode={!printMode && mode === "dark"}>
+      <LightDarkProvider
+        theme={printMode ? "light" : mode}
+        changeTheme={setTheme}
+        print={altPrint}
+      >
         {children}
       </LightDarkProvider>
     </MuiCustomTheme>
