@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: 'The Personal Website'
+title: "The Personal Website"
 date: 2012-05-02T01:17:07.000Z
 weight: 50
 printable: true
@@ -19,19 +19,19 @@ Its important enough to my father that his website is [davidARevans.com](http://
 
 ### DanielAREvans.com, is it Daniel A R Evans, or Daniel ARE vans?
 
-![Homepage](/img/uploads/its_a_onepage.PNG)
+![Homepage](/images/uploads/its_a_onepage.PNG)
 
 One of the blanks that was filled was the blog. The template came with example html for the blog, but updating in the manners I currently knew meant statically updating the blog information, and losing the data each time I moved something in, as I had a desire to keep the page short. To solve this, I launched a WordPress Blog, and used a mix of PHP and Javascript to fetch the first three entries from the blog, and populate my site with them on load.
 
-![Broken Blog :(](/img/uploads/broken_blog.PNG)
+![Broken Blog :(](/images/uploads/broken_blog.PNG)
 
 I've never been the best with words. Communication can definitely be a strain at time, but the ideals I hope to connect on with other people push me to keep trying. To this end, I've never been great at talking about my own works, or more specifically what some might call _Achievements._ It doesn't come across amazingly, but the words for my 'Works' page really meant something to me. It didn't, and doesn't, matter what an employer might think.
 
-![gotta go fast](/img/uploads/projects_page.PNG)
+![gotta go fast](/images/uploads/projects_page.PNG)
 
 My contact page was simple and function, it included links to my social media or whatever. No one ever contacted me.
 
-![undefined](/img/uploads/lame_contact_form.PNG)
+![undefined](/images/uploads/lame_contact_form.PNG)
 
 ### It Can Be So Hard To Pick An Internet Handle.
 
@@ -44,4 +44,3 @@ High school is here. I'm Team Xbox, not Team PlayStation. `migetman9` doesn't fe
 Now we're at University. Computer Science class is a bit too elementary for me. `me@danielarevans.com` is incredibly long to write and people never understand it means Daniel A.R. Evans. I'm [Dare](/project/magfest). New gTLDs are available. `daredoes` is who I'll be, and `DareDoes.Work` will be my domain. `daredoestweets`, `daredoesgithub`, `daredoeshishomework`. So many use cases. I think this is it for me. Here I am.
 
 # I'm Dare, and I do work.
-

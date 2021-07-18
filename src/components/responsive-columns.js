@@ -1,16 +1,19 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Grid from '@material-ui/core/Grid'
 
 export default class ResponsiveColumns extends React.Component {
   makeColumnsElementFromItems(items) {
     return items.map(function(columnChildren, columnNumber) {
       return (
-        <div
+        <Grid
           key={`responseive-column-${columnNumber}`}
-          className={`responsive-column responsive-column-${columnNumber}`}
+          item
+          xs={12}
+          md={6}
         >
           {columnChildren}
-        </div>
+        </Grid>
       )
     })
   }
@@ -18,7 +21,7 @@ export default class ResponsiveColumns extends React.Component {
   render = () => {
     const { items } = this.props
     this.elements = this.makeColumnsElementFromItems(items)
-    return <div className="responsive-columns">{this.elements}</div>
+    return <Grid justify='center' alignItems='flex-start' container spacing={5} direction='row'>{this.elements}</Grid>
   }
 }
 

@@ -1,21 +1,24 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { kebabCase } from "lodash"
 import Helmet from "react-helmet"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Project from "../components/Project"
-// import Content, { HTMLContent } from '../components/Content'
+import { graphql } from "gatsby"
+import Grid from "@material-ui/core/Grid"
+import Layout from "@components/Layout"
+import SEO from "@components/SEO"
+import Project from "@components/Resume/Project"
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post, site } = data
   const { title, date } = post.frontmatter
   return (
-    <Layout className="print-safe">
+    <Layout printButton print>
       <SEO title={title} />
       <Helmet title={`${title} | ${site.siteMetadata.title}`} />
-      <Project nonLinkTitle={true} key={post.id} {...post} />
+      <Grid container spacing={1}>
+        <Grid item>
+          <Project nonLinkTitle={true} key={post.id} {...post} />
+        </Grid>
+      </Grid>
     </Layout>
   )
 }

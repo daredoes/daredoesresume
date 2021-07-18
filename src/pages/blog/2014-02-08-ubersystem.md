@@ -1,7 +1,7 @@
 ---
 templateKey: "blog-post"
 title: MAGFest Registration and Account Management System
-image: /img/uploads/trust-squarewave.png
+image: /images/uploads/trust-squarewave.png
 date: 2014-02-08T04:38:53.000Z
 weight: 50
 printable: true
@@ -14,6 +14,7 @@ tags:
   - volunteer
   - development
 ---
+
 ### MAGFest's [Registration and Account Management System](https://github.com/magfest/ubersystem), better known as
 
 ## Ubersystem, or Uber for short!
@@ -26,7 +27,7 @@ The first project I implemented for MAGFest was a map featuring all of our atten
 
 ##### I've since learned much more effective ways to tally up such data.
 
-The second project I implemented for MAGFest was a promotional code system. In addition to my work as an engineer, I was an event coordinator for MAGFest. As MAGFest, we believed that badges are somewhat like candy. We can afford to give a handful away. Still, when I attempted this I would be required to collect someone's email, send them a badge, and wait for them to accept it. This was not the smooth delivery of a free badge I desired. Given this problem, I designed a promotional code system for MAGFest that would allow authorized users to create flexible promotional codes. Promotional codes were designed for many situations. 
+The second project I implemented for MAGFest was a promotional code system. In addition to my work as an engineer, I was an event coordinator for MAGFest. As MAGFest, we believed that badges are somewhat like candy. We can afford to give a handful away. Still, when I attempted this I would be required to collect someone's email, send them a badge, and wait for them to accept it. This was not the smooth delivery of a free badge I desired. Given this problem, I designed a promotional code system for MAGFest that would allow authorized users to create flexible promotional codes. Promotional codes were designed for many situations.
 
 A promotional code may have unlimited uses, or a number of remaining uses. A promotional code may be uniquely entered, auto-generated, or built from a user-supplied list of unique words. A promotional code may take a flat amount off the cost of a badge, may set the cost of badge to a flat amount, or may reduce the cost of a badge by a percentage. This was a versatile system that I could use for many situations. To aid my own distribution efforts, once this project was complete I wrote a small script that turned the exported codes into a sliceable PDF.
 

@@ -12,7 +12,7 @@ tags:
   - WIP
 ---
 
-### Have you ever worked in an environment where pull requests need your review in a timely manner, but there is a lot of traffic on slack, or in emails? 
+##### Have you ever worked in an environment where pull requests need your review in a timely manner, but there is a lot of traffic on slack, or in emails? 
 
 Worry no more! With this in-progress tool, you can select specific repostiories linked to your github account to monitor for pull requests needing your review! 
 

@@ -5,12 +5,26 @@ module.exports = {
     author: "@daredoeswork",
   },
   plugins: [
+    `gatsby-plugin-theme`,
+    `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@src": "src",
+          "@components": "src/components",
+          "@layouts": "src/layouts",
+          "@theme": "plugins/gatsby-plugin-theme",
+          "@pages": "src/pages",
+        },
+        extensions: ["js"],
+      },
+    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {
         useResolveUrlLoader: true,
-        precision: 6,
       },
     },
     {
@@ -27,6 +41,8 @@ module.exports = {
         name: "pages",
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: "gatsby-transformer-remark",
@@ -35,7 +51,9 @@ module.exports = {
           {
             resolve: "gatsby-remark-relative-images",
             options: {
-              name: "uploads",
+              // [Optional] The root of "media_folder" in your config.yml
+              // Defaults to "static"
+              staticFolderName: "src",
             },
           },
           {
@@ -56,23 +74,22 @@ module.exports = {
           {
             resolve: "gatsby-remark-embed-youtube",
           },
-          {
-            resolve: "gatsby-remark-custom-blocks",
-            options: {
-              blocks: {
-                print: {
-                  classes: "print-only",
-                },
-                noprint: {
-                  classes: "no-print",
-                },
-              },
-            },
-          },
+          // {
+          //   resolve: "gatsby-remark-custom-blocks",
+          //   options: {
+          //     blocks: {
+          //       print: {
+          //         classes: "print-only",
+          //       },
+          //       noprint: {
+          //         classes: "no-print",
+          //       },
+          //     },
+          //   },
+          // },
         ],
       },
     },
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -82,7 +99,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icons/favicon.png`, // This path is relative to the root of the site.
       },
     },
     "gatsby-plugin-netlify-cms",
