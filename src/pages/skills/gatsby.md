@@ -1,6 +1,6 @@
 ---
-title: "React"
-icon: ["fab", "react"]
+title: "GatsbyJS"
+icon: ["fas", "code"]
 weight: 50
 printable: true
 visible: true
