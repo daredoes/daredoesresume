@@ -4,17 +4,18 @@ name: "ZEFR Inc"
 title: Full-Stack Software Engineer III
 external_url: "https://zefr.com"
 date: "2022-07-07T08:00:00-07:00"
-display_date: July 2022
+display_date: July 2022 - April 2024
 weight: 50
 printable: true
 visible: true
 ---
 
-During my time at Zefr I have worked on a team focused on delivering a web product called Atrium. As part of this team, I focus on efforts that unblock my fellow engineers, allowing them to deliver their highest quality work with greater ease. Some of this work includes
+The highlight of my time at Zefr focuses on delivering a high quality sales tool within 6 weeks on a newly formed team.
 
+Other work I did includes:
 - A complete rewrite of internal libraries into TypeScript
 - CI/CD Pipeline updates
 - Legacy web updates with backwards compatibility
 - Migration of test frameworks
 
-My workflow stack is: React, Typescript, Excel, Node JS;
+My workflow stack here was: React, Typescript, Excel, Node JS;
