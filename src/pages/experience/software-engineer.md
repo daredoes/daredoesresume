@@ -5,7 +5,7 @@ external_url: "https://rinse.com"
 date: "2018-04-02T08:00:00-07:00"
 display_date: "April 2018 - March 2019"
 weight: 50
-printable: false
+printable: true
 visible: true
 key: "experience"
 ---
