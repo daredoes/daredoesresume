@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6e9b1291-2582-4de8-8a8b-d37eba4b3e64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gatsby-browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/NavDrawer/NavItems/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/NavDrawer/NavItems/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/NavDrawer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/NavDrawer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Resume/Contact/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Resume/Contact/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Resume/Education/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Resume/Education/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Resume/Elements/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Resume/Elements/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Resume/Experience/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Resume/Experience/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Resume/Profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Resume/Profile/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Resume/Project/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Resume/Project/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Resume/Skill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Resume/Skill/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Section/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Section/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Section/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Section/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tags/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tags/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="37KTlqOle61ywSsB9fGAfxsevfk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "gemini-upgrade-gatsby",
+    "last_opened_file_path": "/Users/dare/Git/daredoesresume",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.29188.1" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e9b1291-2582-4de8-8a8b-d37eba4b3e64" name="Changes" comment="" />
+      <created>1766650916509</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1766650916509</updated>
+      <workItem from="1766650917587" duration="344000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
